@@ -55,6 +55,7 @@
     <Compile Include="EnumCollections.cs" />
     <Compile Include="Models\AbsenContext.cs" />
     <Compile Include="Models\AnggotaContext.cs" />
+    <Compile Include="Models\UnitKerjaContext.cs" />
     <Compile Include="Models\UserContext.cs" />
     <Compile Include="OcphDbContext.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

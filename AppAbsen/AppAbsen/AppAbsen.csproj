@@ -33,6 +33,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="DAL, Version=2.0.0.1, Culture=neutral, PublicKeyToken=null" />
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Xml" />
@@ -54,9 +55,13 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="Helpers.cs" />
+    <Compile Include="ViewModels\AdminViewModel.cs" />
+    <Compile Include="ViewModels\AnggotaViewModel.cs" />
+    <Compile Include="ViewModels\LaporanViewModel.cs" />
     <Compile Include="ViewModels\LoginAdminViewModel.cs" />
     <Compile Include="ViewModels\MainWindowViewModel.cs" />
     <Compile Include="ViewModels\MenuUtamaViewModel.cs" />
+    <Compile Include="ViewModels\UnitKerjaViewModel.cs" />
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>

@@ -11,11 +11,14 @@ namespace AppAbsen.ViewModels
     {
         public AbsenContext Absen { get; set; }
         public UserContext User { get; internal set; }
+        public UnitKerjaContext UnitKerjaContext { get; }
+        public UnitKerjaContext UnitKerja { get; internal set; }
 
         public MainWindowViewModel()
         {
             Absen = new AbsenContext();
             User = new UserContext();
+            UnitKerjaContext = new UnitKerjaContext();
         }
     }
 }
