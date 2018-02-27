@@ -6,6 +6,38 @@
         xmlns:local="clr-namespace:AppAbsen"
         mc:Ignorable="d"
         Title="MainWindow" WindowState="Maximized">
+    <Window.Resources>
+        <Style x:Key="myLabel" TargetType="Label">
+            <Setter Property="Margin" Value="0 5 0 0"/>
+            <Setter Property="Height" Value="27"/>
+            <Setter Property="Foreground" Value="Black"/>
+
+        </Style>
+        <Style x:Key="myTextBox" TargetType="TextBox">
+            <Setter Property="Width" Value="50"/>
+            <Setter Property="Margin" Value="5"/>
+            <Setter Property="Height" Value="23"/>
+            <Setter Property="HorizontalAlignment" Value="Left"/>
+            <Setter Property="Background" Value="#FF333333"/>
+            <Setter Property="Foreground" Value="#FFEC6726"/>
+        </Style>
+        <Style x:Key="btnAdd" TargetType="Button">
+            <Setter Property="Foreground" Value="white"/>
+            <Setter Property="Background" Value="#FF4ED37C"/>
+            <Setter Property="Height" Value="30"/>
+            <Setter Property="Width" Value="100"/>
+            <Setter Property="HorizontalAlignment" Value="Center"/>
+        </Style>
+        <Style x:Key="btnCancel" TargetType="Button">
+            <Setter Property="Foreground" Value="white"/>
+            <Setter Property="Background" Value="#FFEC6726"/>
+            <Setter Property="Height" Value="30"/>
+            <Setter Property="Width" Value="100"/>
+            <Setter Property="HorizontalAlignment" Value="Center"/>
+        </Style>
+
+    </Window.Resources>
+    
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="275*"/>
