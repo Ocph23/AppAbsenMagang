@@ -82,7 +82,10 @@ namespace AppAbsen.ViewModels
 
         private bool SaveCommandValidation(object obj)
         {
-            throw new NotImplementedException();
+            if (string.IsNullOrEmpty(IdUnitKerja) || string.IsNullOrEmpty(NamaUnitKerja))
+                return false;
+            else
+                return true;
         }
 
         private void NewCommandAction(object obj)
