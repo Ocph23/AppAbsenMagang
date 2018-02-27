@@ -73,18 +73,6 @@
     <Compile Include="ViewModels\MainWindowViewModel.cs" />
     <Compile Include="ViewModels\MenuUtamaViewModel.cs" />
     <Compile Include="ViewModels\UnitKerjaViewModel.cs" />
-    <Compile Include="Views\Anggota.xaml.cs">
-      <DependentUpon>Anggota.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Views\Login.xaml.cs">
-      <DependentUpon>Login.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Views\MenuAdmin.xaml.cs">
-      <DependentUpon>MenuAdmin.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Views\UnitKerja.xaml.cs">
-      <DependentUpon>UnitKerja.xaml</DependentUpon>
-    </Compile>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -131,9 +119,6 @@
       <Project>{81fb4281-60c2-449f-9b1e-7ab95a789684}</Project>
       <Name>AppAbsen.Library</Name>
     </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="img\LogoJayapura.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

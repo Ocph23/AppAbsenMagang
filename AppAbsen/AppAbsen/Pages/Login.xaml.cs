@@ -10,16 +10,17 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
+using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace AppAbsen.Views
+namespace AppAbsen.Pages
 {
     /// <summary>
-    /// Interaction logic for Anggota.xaml
+    /// Interaction logic for Login.xaml
     /// </summary>
-    public partial class Anggota : Window
+    public partial class Login : Page
     {
-        public Anggota()
+        public Login()
         {
             InitializeComponent();
         }
