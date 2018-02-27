@@ -1,10 +1,10 @@
-﻿using App.Library.DTO;
+﻿using AppAbsen.Library.DTO;
 using DAL.DContext;
 using DAL.Repository;
 using System;
 using System.Data;
 
-namespace App.Library
+namespace AppAbsen.Library
 {
     public class OcphDbContext : IDbContext, IDisposable
     {

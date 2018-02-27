@@ -1,5 +1,5 @@
 ﻿using System;
-using App.Library.Models;
+using AppAbsen.Library.Models;
 
 namespace AppAbsen.ViewModels
 {

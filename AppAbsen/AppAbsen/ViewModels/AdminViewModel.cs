@@ -1,4 +1,5 @@
-﻿using App.Library.DTO;
+﻿using AppAbsen.Library.DTO;
+using AppAbsen.Library.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -16,8 +17,8 @@ namespace AppAbsen.ViewModels
         public AdminViewModel(user userLogin)
         {
             UserLogin = userLogin;
-            var datas = Helpers.GetMainViewModel().Absen.GetTodaySource();
-            SourceView = (CollectionView)CollectionViewSource.GetDefaultView(datas);
+            absenContex = Helpers.GetMainViewModel().Absen;
+            SourceView = (CollectionView)CollectionViewSource.GetDefaultView(absenContex.Source);
             UnitKerjaCommandView = new CommandHandler { CanExecuteAction = x => true, ExecuteAction = UnitKerjaCommandViewAction };
             AnggotaViewCommand = new CommandHandler { CanExecuteAction = x => true, ExecuteAction = AnggotaViewCommandAction };
             LaporanViewCommand = new CommandHandler { CanExecuteAction = x => true, ExecuteAction = LaporanViewCommandAction };
@@ -39,6 +40,9 @@ namespace AppAbsen.ViewModels
         }
 
         public user UserLogin { get; }
+
+        private AbsenContext absenContex;
+
         public CommandHandler UnitKerjaCommandView { get; }
         public CommandHandler AnggotaViewCommand { get; }
         public CommandHandler LaporanViewCommand { get; }

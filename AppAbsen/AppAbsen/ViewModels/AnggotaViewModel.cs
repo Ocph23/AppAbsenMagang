@@ -2,7 +2,7 @@
 {
     internal class AnggotaViewModel
     {
-        public AnggotaViewModel(global::App.Library.DTO.user userLogin)
+        public AnggotaViewModel(global::AppAbsen.Library.DTO.user userLogin)
         {
         }
     }

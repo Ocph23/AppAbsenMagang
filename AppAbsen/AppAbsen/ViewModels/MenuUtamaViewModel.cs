@@ -1,6 +1,6 @@
-﻿using App.Library;
-using App.Library.DTO;
-using App.Library.Models;
+﻿using AppAbsen.Library;
+using AppAbsen.Library.DTO;
+using AppAbsen.Library.Models;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -41,7 +41,7 @@ namespace AppAbsen.ViewModels
         public MenuUtamaViewModel()
         {
             absencontext = new AbsenContext();
-            SourceView = (CollectionView)CollectionViewSource.GetDefaultView(absencontext.TodayCollection);
+            SourceView = (CollectionView)CollectionViewSource.GetDefaultView(absencontext.Source);
             AdminLoginCommand = new CommandHandler { CanExecuteAction = x => true, ExecuteAction = AdminLoginAction };
             AbsenCommand = new CommandHandler { CanExecuteAction = AbsenCommandValidate, ExecuteAction = AbsenCommandAction };
         }
@@ -56,7 +56,7 @@ namespace AppAbsen.ViewModels
 
         private void AbsenCommandAction(object obj)
         {
-           var isSaved= absencontext.AddNewAbsen(new absen { });
+           var isSaved= absencontext.Add(new absen { });
             SourceView.Refresh();
         }
 

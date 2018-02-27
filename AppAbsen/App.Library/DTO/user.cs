@@ -1,5 +1,5 @@
 ﻿using System;
-namespace App.Library.DTO
+namespace AppAbsen.Library.DTO
 {
     public class user:BaseNotify
     {

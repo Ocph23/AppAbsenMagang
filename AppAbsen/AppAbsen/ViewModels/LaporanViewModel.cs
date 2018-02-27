@@ -2,7 +2,7 @@
 {
     internal class LaporanViewModel
     {
-        public LaporanViewModel(global::App.Library.DTO.user userLogin)
+        public LaporanViewModel(global::AppAbsen.Library.DTO.user userLogin)
         {
         }
     }

@@ -23,6 +23,7 @@ namespace AppAbsen
         public MainWindow()
         {
             InitializeComponent();
+            this.DataContext = new ViewModels.MainWindowViewModel();
         }
     }
 }

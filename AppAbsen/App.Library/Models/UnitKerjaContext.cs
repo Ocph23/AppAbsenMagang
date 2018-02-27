@@ -1,11 +1,11 @@
-﻿using App.Library.DTO;
+﻿using AppAbsen.Library.DTO;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace App.Library.Models
+namespace AppAbsen.Library.Models
 {
    public class UnitKerjaContext
     {
@@ -32,5 +32,86 @@ namespace App.Library.Models
                 return db.UnitKerja.Select().ToList();
             }
         }
+
+        public bool Add(unitkerja item)
+        {
+            using (var db = new OcphDbContext())
+            {
+                if (db.UnitKerja.Insert(item))
+                {
+                    Source.Add(item);
+                    return true;
+                }
+                else
+                    return false;
+            }
+        }
+
+        public bool Update(unitkerja item)
+        {
+            using (var db = new OcphDbContext())
+            {
+                var trans = db.Connection.BeginTransaction();
+                try
+                {
+                    if (db.UnitKerja.Update(O => new { O.NamaUnitKerja }, item, O => O.IdUnitKerja == item.IdUnitKerja))
+                    {
+                        var data = Source.Where(O => O.IdUnitKerja == item.IdUnitKerja).FirstOrDefault();
+                        if (data != null)
+                        {
+                            data.NamaUnitKerja = item.NamaUnitKerja;
+                            trans.Commit();
+                            return true;
+                        }
+                        else
+                        {
+                            throw new SystemException();
+                        }
+                    }
+                    else
+                        return false;
+                }
+                catch (Exception)
+                {
+                    trans.Rollback();
+                    return false;
+                }
+            }
+        }
+
+        public bool Delete(unitkerja item)
+        {
+
+            using (var db = new OcphDbContext())
+            {
+                var trans = db.Connection.BeginTransaction();
+                try
+                {
+                    if (db.UnitKerja.Delete(O => O.IdUnitKerja == item.IdUnitKerja))
+                    {
+                        var data = Source.Where(O => O.IdUnitKerja == item.IdUnitKerja).FirstOrDefault();
+                        if (data != null)
+                        {
+                            Source.Remove(data);
+                        }
+                        trans.Commit();
+                        return true;
+                    }else
+                    {
+                        return false;
+                    }
+                }
+                catch (Exception)
+                {
+                    trans.Rollback();
+                    return false;
+                }
+            }
+        }
+
+
+        
+
+
     }
 }

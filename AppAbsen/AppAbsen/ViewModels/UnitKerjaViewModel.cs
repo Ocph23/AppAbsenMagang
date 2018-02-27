@@ -1,12 +1,12 @@
-﻿using App.Library.DTO;
-using App.Library.Models;
+﻿using AppAbsen.Library.DTO;
+using AppAbsen.Library.Models;
 using System;
 using System.ComponentModel;
 using System.Windows.Data;
 
 namespace AppAbsen.ViewModels
 {
-    internal class UnitKerjaViewModel:unitkerja, IDataErrorInfo
+    public class UnitKerjaViewModel:unitkerja, IDataErrorInfo
     {
         private string error;
 
@@ -51,27 +51,33 @@ namespace AppAbsen.ViewModels
 
         private void DeleteCommandAction(object obj)
         {
-            throw new NotImplementedException();
+            contextUnitKerja.Delete(this);
         }
 
         private bool DeleteCommandValidation(object obj)
         {
-            throw new NotImplementedException();
+            if (string.IsNullOrEmpty(IdUnitKerja))
+                return false;
+            else
+                return true;
         }
 
         private void EditCommandAction(object obj)
         {
-            throw new NotImplementedException();
+            contextUnitKerja.Update(this);
         }
 
         private bool EditCommandValidation(object obj)
         {
-            throw new NotImplementedException();
+            if (string.IsNullOrEmpty(IdUnitKerja) || string.IsNullOrEmpty(NamaUnitKerja))
+                return false;
+            else
+                return true;
         }
 
         private void SaveCommandAction(object obj)
         {
-            throw new NotImplementedException();
+            contextUnitKerja.Add(this);
         }
 
         private bool SaveCommandValidation(object obj)

@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using DAL;
 
-namespace App.Library.DTO
+namespace AppAbsen.Library.DTO
 {
     [TableName("absen")]
     public class absen : BaseNotify

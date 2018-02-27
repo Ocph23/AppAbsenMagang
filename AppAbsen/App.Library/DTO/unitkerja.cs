@@ -5,10 +5,10 @@ using System.Text;
 using System.Threading.Tasks;
 using DAL;
 
-namespace App.Library.DTO
+namespace AppAbsen.Library.DTO
 {
     [TableName("unitkerja")]
-    public class unitkerja : BaseNotifyProperty
+    public class unitkerja : BaseNotify
     {
         [PrimaryKey("IdUnitKerja")]
         [DbColumn("IdUnitKerja")]

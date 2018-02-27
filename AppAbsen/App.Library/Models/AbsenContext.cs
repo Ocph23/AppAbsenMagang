@@ -1,33 +1,23 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using App.Library.DTO;
+using AppAbsen.Library.DTO;
 
-namespace App.Library.Models
+namespace AppAbsen.Library.Models
 {
     public class AbsenContext
     {
         private List<absen> source;
 
-        public AbsenContext()
+        public List<absen> Source
         {
-
-        }
-
-        public List<absen> TodayCollection {
-            get
-            {
+            get {
                 if (source == null)
-                {
-                    source = this.GetSource();
-                }
-                var now = DateTime.Now;
-                return source.Where(O=>O.Tanggal.Day == now.Day && O.Tanggal.Month==now.Month && O.Tanggal.Year==now.Year).ToList();
-            }
+                    source = GetSource();
+                return source; }
+            set { source = value; }
         }
+
 
         private List<absen> GetSource()
         {
@@ -54,14 +44,14 @@ namespace App.Library.Models
             }
         }
 
-        public bool AddNewAbsen(absen absen)
+        public bool Add(absen absen)
         {
             using (var db = new OcphDbContext())
             {
                 absen.IdAbsen = db.Absens.InsertAndGetLastID(absen);
                 if(absen.IdAbsen>0)
                 {
-                    TodayCollection.Add(absen);
+                    Source.Add(absen);
                     return true;
                 }else
                 {
@@ -70,9 +60,84 @@ namespace App.Library.Models
             }
         }
 
-        public ObservableCollection<absen> GetTodaySource()
+        public bool Update(absen item)
         {
-            return new ObservableCollection<absen>(TodayCollection);
+            using (var db = new OcphDbContext())
+            {
+                var trans = db.Connection.BeginTransaction();
+                try
+                {
+                    if(db.Absens.Update(x=>new {
+                        x.Alpa,
+                        x.Bulan,
+                        x.Hadir,
+                        x.Ijin,
+                        x.Keterangan,
+                        x.Sakit,
+                        x.Tanggal,
+                        x.WaktuMasuk,
+                        x.WaktuPulang
+                    },item,x=>x.IdAbsen==item.IdAbsen))
+                    {
+                        var res = Source.Where(O => O.IdAbsen == item.IdAbsen).FirstOrDefault();
+                        if (res != null)
+                        {
+                            res.Alpa = item.Alpa;
+                            res.Bulan = item.Bulan;
+                            res.Hadir = item.Hadir;
+                            res.Ijin = item.Ijin;
+                            res.Keterangan = item.Keterangan;
+                            res.Sakit = item.Sakit;
+                            res.Tanggal = item.Tanggal;
+                            res.WaktuMasuk = item.WaktuMasuk;
+                            res.WaktuPulang = item.WaktuPulang;
+                            trans.Commit();
+                            return true;
+                        }
+                        else
+                            throw new SystemException();
+
+                    }else
+                        throw new SystemException();
+
+                }
+                catch (Exception)
+                {
+                    trans.Rollback();
+                    return false;
+                }
+            }
+        }
+
+        public bool Delete(absen item)
+        {
+
+            using (var db = new OcphDbContext())
+            {
+                var trans = db.Connection.BeginTransaction();
+                try
+                {
+                    if (db.Absens.Delete(O => O.IdAbsen== item.IdAbsen))
+                    {
+                        var data = Source.Where(O => O.IdAbsen == item.IdAbsen).FirstOrDefault();
+                        if (data != null)
+                        {
+                            Source.Remove(data);
+                        }
+                        trans.Commit();
+                        return true;
+                    }
+                    else
+                    {
+                        return false;
+                    }
+                }
+                catch (Exception)
+                {
+                    trans.Rollback();
+                    return false;
+                }
+            }
         }
     }
 }

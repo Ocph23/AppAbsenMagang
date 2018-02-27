@@ -1,8 +1,8 @@
 ﻿using System;
-using App.Library.DTO;
+using AppAbsen.Library.DTO;
 using DAL;
 
-namespace App.Library.Models
+namespace AppAbsen.Library.Models
 {
     public class UserContext : user
     {
