@@ -21,5 +21,15 @@ namespace AppAbsen.Library
         Tidak,Ya
     }
 
+    public enum Kehadiran
+    {
+        Hadir,Alpa,Sakit,Izin,Terlambat,Sudah
+    }
+
+    public enum StatusBisaAbsen
+    {
+        Datang,Pulang
+    }
+
 
 }

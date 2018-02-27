@@ -25,5 +25,10 @@ namespace AppAbsen
             InitializeComponent();
             this.DataContext = new ViewModels.MainWindowViewModel();
         }
+
+        internal void ShowErrorMessage(string v)
+        {
+            MessageBox.Show(v, "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+        }
     }
 }

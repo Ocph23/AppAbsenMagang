@@ -30,6 +30,7 @@ namespace AppAbsen.ViewModels
         }
 
         public ObservableCollection<absen> Source { get; set; }
+        public user UserLogin { get; }
 
         private AbsenContext absencontext;
 
@@ -38,12 +39,27 @@ namespace AppAbsen.ViewModels
         public CommandHandler AdminLoginCommand { get; }
         public CommandHandler AbsenCommand { get; }
 
-        public MenuUtamaViewModel()
+        public MenuUtamaViewModel(user user)
         {
+            UserLogin = user;
             absencontext = new AbsenContext();
             SourceView = (CollectionView)CollectionViewSource.GetDefaultView(absencontext.Source);
             AdminLoginCommand = new CommandHandler { CanExecuteAction = x => true, ExecuteAction = AdminLoginAction };
             AbsenCommand = new CommandHandler { CanExecuteAction = AbsenCommandValidate, ExecuteAction = AbsenCommandAction };
+            SourceView.Filter = TodayFilter;
+        }
+
+        private bool TodayFilter(object obj)
+        {
+            var data = (absen)obj;
+            if(data!=null)
+            {
+                if (today.IsEqualToday())
+                {
+                    return true;
+                }
+            }
+            return false;
         }
 
         private bool AbsenCommandValidate(object obj)
@@ -56,8 +72,22 @@ namespace AppAbsen.ViewModels
 
         private void AbsenCommandAction(object obj)
         {
-           var isSaved= absencontext.Add(new absen { });
-            SourceView.Refresh();
+            try
+            {
+                var today = DateTime.Now;
+                var dataAbsen = new absen
+                {
+                    IdMahasiswa = idAnggota, Tanggal = today
+                };
+                var isSaved = absencontext.Add(dataAbsen);
+                SourceView.Refresh();
+            }
+            catch (Exception ex)
+            {
+
+                Helpers.ShowErrorMessage(ex.Message);
+            }
+          
         }
 
         private void AdminLoginAction(object obj)
