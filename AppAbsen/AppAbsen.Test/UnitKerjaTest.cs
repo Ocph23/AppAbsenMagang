@@ -13,6 +13,7 @@ namespace AppAbsen.Test
         public UnitKerjaTest()
         {
             context = new AppAbsen.ViewModels.UnitKerjaViewModel(new user());
+            //
         }
 
         [TestMethod]
