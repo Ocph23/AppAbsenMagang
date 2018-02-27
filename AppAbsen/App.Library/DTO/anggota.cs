@@ -52,7 +52,7 @@ namespace AppAbsen.Library.DTO
         }
 
         [DbColumn("Agama")]
-        public string Agama
+        public Kepercayaan Agama
         {
             get { return _agama; }
             set
@@ -62,7 +62,7 @@ namespace AppAbsen.Library.DTO
         }
 
         [DbColumn("JenisKelamin")]
-        public string JenisKelamin
+        public Gender JenisKelamin
         {
             get { return _jeniskelamin; }
             set
@@ -115,8 +115,8 @@ namespace AppAbsen.Library.DTO
         private string _nama;
         private string _tempatlahir;
         private DateTime _tgllahir;
-        private string _agama;
-        private string _jeniskelamin;
+        private Kepercayaan _agama;
+        private Gender _jeniskelamin;
         private string _alamat;
         private string _asaluniversitas;
         private string _asalsekolah;
