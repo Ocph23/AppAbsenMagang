@@ -12,6 +12,7 @@ namespace AppAbsen
     {
         internal static MainWindowViewModel GetMainViewModel()
         {
+            //
             if (App.Current == null)
                 return new MainWindowViewModel();
             return App.Current.Windows[0].DataContext as MainWindowViewModel;
