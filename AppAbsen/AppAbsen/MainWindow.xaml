@@ -6,7 +6,69 @@
         xmlns:local="clr-namespace:AppAbsen"
         mc:Ignorable="d"
         Title="MainWindow" WindowState="Maximized">
+    <Window.Resources>
+        <Style x:Key="myLabel" TargetType="Label">
+            <Setter Property="Margin" Value="0 5 0 0"/>
+            <Setter Property="Height" Value="27"/>
+            <Setter Property="Foreground" Value="Black"/>
+
+        </Style>
+        <Style x:Key="myTextBox" TargetType="TextBox">
+            <Setter Property="Width" Value="50"/>
+            <Setter Property="Margin" Value="5"/>
+            <Setter Property="Height" Value="23"/>
+            <Setter Property="HorizontalAlignment" Value="Left"/>
+            <Setter Property="Background" Value="#FF333333"/>
+            <Setter Property="Foreground" Value="#FFEC6726"/>
+        </Style>
+        <Style x:Key="btnAdd" TargetType="Button">
+            <Setter Property="Foreground" Value="white"/>
+            <Setter Property="Background" Value="#FF4ED37C"/>
+            <Setter Property="Height" Value="30"/>
+            <Setter Property="Width" Value="100"/>
+            <Setter Property="HorizontalAlignment" Value="Center"/>
+        </Style>
+        <Style x:Key="btnCancel" TargetType="Button">
+            <Setter Property="Foreground" Value="white"/>
+            <Setter Property="Background" Value="#FFEC6726"/>
+            <Setter Property="Height" Value="30"/>
+            <Setter Property="Width" Value="100"/>
+            <Setter Property="HorizontalAlignment" Value="Center"/>
+        </Style>
+
+    </Window.Resources>
+    
     <Grid>
-        
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="275*"/>
+            <ColumnDefinition Width="204*"/>
+            <ColumnDefinition Width="281*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="39*"/>
+            <RowDefinition Height="14*"/>
+            <RowDefinition Height="73*"/>
+        </Grid.RowDefinitions>
+        <StackPanel Grid.Column="0" Grid.Row="0">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="25*"/>
+                    <ColumnDefinition Width="5*"/>
+                    <ColumnDefinition Width="70*"/>
+                </Grid.ColumnDefinitions>
+                <StackPanel Grid.Column="0" Grid.Row="0">
+                    <Label Content="Bulan" Style="{StaticResource myLabel}"/>
+                    <Label Content="Tanggal" Style="{StaticResource myLabel}"/>
+                    <Label Content="Jam" Style="{StaticResource myLabel}"/>
+                </StackPanel>
+                <StackPanel Grid.Column="1" Grid.Row="0">
+                    <Label Content=":" Style="{StaticResource myLabel}"/>
+                    <Label Content=":" Style="{StaticResource myLabel}"/>
+                    <Label Content=":" Style="{StaticResource myLabel}"/>
+                </StackPanel>
+            </Grid>
+        </StackPanel>
+
+
     </Grid>
 </Window>
