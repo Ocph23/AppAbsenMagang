@@ -40,12 +40,12 @@
     
     <Grid>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="140*"/>
-            <ColumnDefinition Width="83*"/>
-            <ColumnDefinition Width="157*"/>
+            <ColumnDefinition Width="275*"/>
+            <ColumnDefinition Width="204*"/>
+            <ColumnDefinition Width="281*"/>
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
-            <RowDefinition Height="156"/>
+            <RowDefinition Height="39*"/>
             <RowDefinition Height="14*"/>
             <RowDefinition Height="73*"/>
         </Grid.RowDefinitions>
@@ -66,100 +66,7 @@
                     <Label Content=":" Style="{StaticResource myLabel}"/>
                     <Label Content=":" Style="{StaticResource myLabel}"/>
                 </StackPanel>
-                <StackPanel Grid.Column="2" Grid.Row="0">
-                    <Label Content="{Binding Data.Bulan}"/>
-                    <Label Content="{Binding Data.Tanggal}"/>
-                    <Label Content="{Binding Data.Jam}"/>
-                </StackPanel>
             </Grid>
-        </StackPanel>
-        <StackPanel Grid.Column="1" Grid.Row="0">
-            <Grid>
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="90*"/>
-                    <RowDefinition Height="10*"/>
-                </Grid.RowDefinitions>
-                <StackPanel Grid.Column="0" Grid.Row="0">
-                    <Image Source="img/LogoJayapura.png" Height="124"/>
-                </StackPanel>
-                <StackPanel Grid.Column="0" Grid.Row="1">
-                    <Label Content="SILAHKAN ABSEN" FontSize="18" FontWeight="Bold" Margin="1,0,2,0" HorizontalAlignment="Center"/>
-                </StackPanel>
-            </Grid>
-
-        </StackPanel>
-
-        <StackPanel Grid.Column="2" Grid.Row="0">
-            <Grid>
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="70*"/>
-                    <ColumnDefinition Width="30*"/>
-                </Grid.ColumnDefinitions>
-                <StackPanel Grid.Column="1" Grid.Row="0">
-                    <Button Content="Add" Command="{Binding Login}" CommandParameter="1"/>
-                </StackPanel>
-            </Grid>
-
-        </StackPanel>
-
-        <StackPanel Grid.Column="0" Grid.Row="1">
-            <Label Content="ID_Anggota" FontSize="16" FontWeight="Bold"/>
-            <TextBox Text="{Binding NamaJurusan,Mode=TwoWay,ValidatesOnDataErrors=True}" HorizontalAlignment="Left" Width="166" IsEnabled="{Binding EnabledIdSiswa}" Height="25"/>
-        </StackPanel>
-
-        <StackPanel Grid.Column="1" Grid.Row="1">
-            <Grid>
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="20*"/>
-                    <ColumnDefinition Width="60*"/>
-                    <ColumnDefinition Width="20*"/>
-                </Grid.ColumnDefinitions>
-                <StackPanel Grid.Column="1" Grid.Row="0">
-                    <RadioButton Content="Waktu Masuk" Margin="0 10 0 0" FontSize="14" HorizontalAlignment="Center"/>
-                    <RadioButton Content="Waktu Pulang" FontSize="14" HorizontalAlignment="Center"/>
-                </StackPanel>
-            </Grid>
-            
-        </StackPanel>
-
-        <StackPanel Grid.Column="2" Grid.Row="1">
-            <Grid>
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="35*"/>
-                    <ColumnDefinition Width="30*"/>
-                    <ColumnDefinition Width="35*"/>
-                </Grid.ColumnDefinitions>
-                <StackPanel Grid.Column="1" Grid.Row="0">
-                    <Button Content="ABSEN" FontSize="16" Command="{Binding Absen}" CommandParameter="1" Height="47" Margin="-2,0">
-                        <Button.Effect>
-                            <DropShadowEffect/>
-                        </Button.Effect>
-                    </Button>
-                </StackPanel>
-            </Grid>
-
-        </StackPanel>
-        <StackPanel Grid.Column="0" Grid.Row="2" Grid.ColumnSpan="3">
-            <DataGrid ItemsSource="{Binding SourceViewJurusan}" CanUserAddRows="False" CanUserDeleteRows="False" AutoGenerateColumns="False"
-                  SelectedItem="{Binding Selected}" Foreground="Black" FontSize="13" Margin="50 0 50 0">
-                <DataGrid.Columns>
-                    <DataGridTextColumn Header="Id_Anggota" Binding="{Binding IdAnggota}"  Foreground="#FFEC6726"/>
-                    <DataGridTextColumn Header="Tanggal" Binding="{Binding Tanggal}"  Foreground="#FFEC6726"/>
-                    <DataGridTextColumn Header="Waktu Masuk" Binding="{Binding WaktuMasuk}"  Foreground="#FFEC6726"/>
-                    <DataGridTextColumn Header="WaktuPulang" Binding="{Binding WaktuPulang}"  Foreground="#FFEC6726"/>
-                    <DataGridTextColumn Header="Absen" Binding="{Binding Absen}"  Foreground="#FFEC6726"/>
-                    <DataGridTextColumn Header="Alpa" Binding="{Binding Alpa}"  Foreground="#FFEC6726"/>
-                    <DataGridTextColumn Header="Ijin" Binding="{Binding Ijin}"  Foreground="#FFEC6726"/>
-                    <DataGridTextColumn Header="Sakit" Binding="{Binding Sakit}"  Foreground="#FFEC6726"/>
-                    <DataGridTextColumn Header="Keterangan" Binding="{Binding Keterangan}"  Foreground="#FFEC6726"/>
-                </DataGrid.Columns>
-                <DataGrid.ContextMenu>
-                    <ContextMenu>
-                        <MenuItem Header="Delete" Command="{Binding DeleteCommand}">
-                        </MenuItem>
-                    </ContextMenu>
-                </DataGrid.ContextMenu>
-            </DataGrid>
         </StackPanel>
 
 
