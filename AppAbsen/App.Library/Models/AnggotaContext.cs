@@ -23,7 +23,11 @@ namespace AppAbsen.Library.Models
 
         private List<anggota> GetSource()
         {
-            throw new NotImplementedException();
+
+            using (var db = new OcphDbContext())
+            {
+                return db.Anggotas.Select().ToList();
+            }
         }
 
         public bool Add(anggota item)

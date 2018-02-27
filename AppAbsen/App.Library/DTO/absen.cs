@@ -121,7 +121,7 @@ namespace AppAbsen.Library.DTO
             }
         }
 
-        public anggota Anggota { get; internal set; }
+        public anggota Anggota { get;  set; }
 
         private int _idabsen;
         private string _idmahasiswa;

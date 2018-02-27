@@ -10,12 +10,24 @@ namespace AppAbsen
 {
     public class Helpers
     {
-        internal static MainWindowViewModel GetMainViewModel()
+        public static MainWindowViewModel GetMainViewModel()
         {
             //
             if (App.Current == null)
                 return new MainWindowViewModel();
             return App.Current.Windows[0].DataContext as MainWindowViewModel;
         }
+
+        public static void ShowErrorMessage(string v)
+        {
+            var main = GetMain();
+            main.ShowErrorMessage(v);
+        }
+
+        public static MainWindow GetMain()
+        {
+            return App.Current.Windows[0] as MainWindow;
+        }
+
     }
 }

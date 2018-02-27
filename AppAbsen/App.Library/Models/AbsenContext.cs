@@ -46,18 +46,105 @@ namespace AppAbsen.Library.Models
 
         public bool Add(absen absen)
         {
-            using (var db = new OcphDbContext())
+            try
             {
-                absen.IdAbsen = db.Absens.InsertAndGetLastID(absen);
-                if(absen.IdAbsen>0)
+                using (var db = new OcphDbContext())
                 {
-                    Source.Add(absen);
-                    return true;
-                }else
-                {
-                    return false;
+                    var dataAnggota = db.Anggotas.Where(O => O.IdMahasiswa == absen.IdMahasiswa).FirstOrDefault();
+                    if (dataAnggota == null)
+                        throw new SystemException("Data Mahasiswa Tidak Ditemukan");
+                    else
+                    {
+                        var dataAbsen = Source.Where(O => O.IdMahasiswa == absen.IdMahasiswa && O.Tanggal == absen.Tanggal).FirstOrDefault();
+                        DateTime today = DateTime.Now;
+                        var result = CanAbsen(dataAbsen);
+                        if (result == StatusBisaAbsen.Datang)
+                        {
+                            absen.WaktuMasuk = today.TimeOfDay;
+                            absen.Hadir = Status.Ya;
+                            absen.Bulan = today.Month.ToString();
+                            absen.IdAbsen = db.Absens.InsertAndGetLastID(absen);
+                            absen.Anggota = dataAnggota;
+                            Source.Add(absen);
+                            return true;
+                        }
+                        else
+                        {
+                            dataAbsen.WaktuPulang = today.TimeOfDay;
+                            return db.Absens.Update(O => new { O.WaktuPulang }, dataAbsen, O => O.IdAbsen == dataAbsen.IdAbsen);
+                        }
+                    }
                 }
             }
+            catch (Exception ex)
+            {
+
+                throw new SystemException(ex.Message);
+            }
+            
+        }
+
+        private StatusBisaAbsen CanAbsen(absen ab)
+        {
+            TimeSpan time = DateTime.Now.TimeOfDay;
+            if(time <= new TimeSpan(12, 0, 0))
+            {
+                if (ab == null)
+                {
+                    if (time <= new TimeSpan(8, 30, 0))
+                    {
+                        return StatusBisaAbsen.Datang;
+                    }
+                    else
+                    {
+                        throw new SystemException("Maaf Anda Terlmabat");
+                    }
+                }
+                else
+                {
+                    if (time <= new TimeSpan(12, 0, 0))
+                    {
+                        throw new SystemException("Anda Sudah Absen Masuk Hari Ini");
+                    }
+                    else
+                    {
+                        if (ab.WaktuPulang != new TimeSpan(0, 0, 0))
+                            throw new SystemException("Anda Sudah Absen Pulang Hari Ini");
+                        else if (time <= new TimeSpan(16, 30, 0))
+                        {
+                            throw new SystemException("Maaf Belum Saatnya Absen Pulang");
+                        }
+                        else
+                            return StatusBisaAbsen.Pulang;
+                    }
+                }
+            }else
+            {
+                if (ab == null)
+                    throw new SystemException("Maaf Anda Alpha Hari Ini");
+                else
+                {
+                    if (ab.WaktuPulang != new TimeSpan(0, 0, 0))
+                        throw new SystemException("Anda Sudah Absen Pulang Hari Ini");
+                    else if (time <= new TimeSpan(16, 30, 0))
+                    {
+                        throw new SystemException("Maaf Belum Saatnya Absen Pulang");
+                    }
+                    else
+                        return StatusBisaAbsen.Pulang;
+                }
+            }
+           
+        }
+
+        private bool CheckStatusAbsen()
+        {
+            TimeSpan time = DateTime.Now.TimeOfDay;
+            if(time<new TimeSpan(12,0,0))
+            {
+                return true;
+            }
+            return false;
         }
 
         public bool Update(absen item)
