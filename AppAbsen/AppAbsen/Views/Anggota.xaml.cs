@@ -18,10 +18,11 @@ namespace AppAbsen.Views
     /// Interaction logic for Anggota.xaml
     /// </summary>
     public partial class Anggota : Window
-    {
+    {        
         public Anggota()
         {
             InitializeComponent();
+
         }
     }
 }

@@ -13,7 +13,7 @@
             <RowDefinition Height="78*"/>
         </Grid.RowDefinitions>
         <StackPanel Grid.Row="0" Grid.Column="0">
-            <Label Content="INPUT DATA UNIT KERJA" FontSize="30" FontWeight="Bold" HorizontalAlignment="Center" Margin="0 10 0 0"/>
+            <Label Content="INPUT DATA ANGGOTA" FontSize="30" FontWeight="Bold" HorizontalAlignment="Center" Margin="198,10,192,0" Width="370"/>
         </StackPanel>
         <StackPanel Grid.Column="0" Grid.Row="1">
             <Grid>
@@ -33,8 +33,8 @@
         <StackPanel Grid.Row="2" Grid.Column="0" Margin="15 0 15 0">
             <Grid>
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="40*"/>
-                    <ColumnDefinition Width="60*"/>
+                    <ColumnDefinition Width="35*"/>
+                    <ColumnDefinition Width="65*"/>
                 </Grid.ColumnDefinitions>
 
                 <StackPanel Grid.Column="0" Grid.Row="0">
@@ -51,12 +51,28 @@
                                     <ColumnDefinition Width="50*"/>
                                 </Grid.ColumnDefinitions>
                                 <StackPanel Grid.Column="0" Grid.Row="0">
-                                    <Label Content="Id Unit Kerja" FontSize="15" FontWeight="Bold"/>
-                                    <Label Content="Nama Unit Kerja" FontSize="15" FontWeight="Bold" Margin="0 20 0 0"/>
+                                    <Label Content="IdAnggota" FontSize="15" FontWeight="Bold"/>
+                                    <Label Content="Nama" FontSize="15" FontWeight="Bold"/>
+                                    <Label Content="Tempat Lahir" FontSize="15" FontWeight="Bold"/>
+                                    <Label Content="Tanggal Lahir" FontSize="15" FontWeight="Bold"/>
+                                    <Label Content="Agama" FontSize="15" FontWeight="Bold"/>
+                                    <Label Content="Jenis Kelamin" FontSize="15" FontWeight="Bold"/>
+                                    <Label Content="Alamat" FontSize="15" FontWeight="Bold"/>
+                                    <Label Content="Asal Universitas" FontSize="15" FontWeight="Bold"/>
+                                    <Label Content="Asal Sekolah" FontSize="15" FontWeight="Bold"/>
+                                    <Label Content="Nama Unit Ke" FontSize="15" FontWeight="Bold"/>
                                 </StackPanel>
                                 <StackPanel Grid.Column="1" Grid.Row="0">
-                                    <TextBox Text="{Binding IdUnitKerja, Mode=TwoWay, ValidatesOnDataErrors=True}" Margin="0,3,0,0" IsEnabled="{Binding EnabledIdSiswa}" Height="30" HorizontalAlignment="Left" Width="123"/>
-                                    <TextBox Text="{Binding NamaUnitKerja, Mode=TwoWay, ValidatesOnDataErrors=True}" Margin="0,25,0,0" IsEnabled="{Binding EnabledIdSiswa}" Height="145" HorizontalAlignment="Left" Width="123"/>
+                                    <TextBox Text="{Binding IdUnitKerja, Mode=TwoWay, ValidatesOnDataErrors=True}" Margin="0,5,0,0" IsEnabled="{Binding EnabledIdSiswa}" Height="25" HorizontalAlignment="Left" Width="123"/>
+                                    <TextBox Text="{Binding IdUnitKerja, Mode=TwoWay, ValidatesOnDataErrors=True}" Margin="0,5,0,0" IsEnabled="{Binding EnabledIdSiswa}" Height="25" HorizontalAlignment="Left" Width="123"/>
+                                    <TextBox Text="{Binding IdUnitKerja, Mode=TwoWay, ValidatesOnDataErrors=True}" Margin="0,5,0,0" IsEnabled="{Binding EnabledIdSiswa}" Height="25" HorizontalAlignment="Left" Width="123"/>
+                                    <TextBox Text="{Binding IdUnitKerja, Mode=TwoWay, ValidatesOnDataErrors=True}" Margin="0,5,0,0" IsEnabled="{Binding EnabledIdSiswa}" Height="25" HorizontalAlignment="Left" Width="123"/>
+                                    <TextBox Text="{Binding IdUnitKerja, Mode=TwoWay, ValidatesOnDataErrors=True}" Margin="0,5,0,0" IsEnabled="{Binding EnabledIdSiswa}" Height="25" HorizontalAlignment="Left" Width="123"/>
+                                    <TextBox Text="{Binding IdUnitKerja, Mode=TwoWay, ValidatesOnDataErrors=True}" Margin="0,5,0,0" IsEnabled="{Binding EnabledIdSiswa}" Height="25" HorizontalAlignment="Left" Width="123"/>
+                                    <TextBox Text="{Binding IdUnitKerja, Mode=TwoWay, ValidatesOnDataErrors=True}" Margin="0,5,0,0" IsEnabled="{Binding EnabledIdSiswa}" Height="25" HorizontalAlignment="Left" Width="123"/>
+                                    <TextBox Text="{Binding IdUnitKerja, Mode=TwoWay, ValidatesOnDataErrors=True}" Margin="0,5,0,0" IsEnabled="{Binding EnabledIdSiswa}" Height="25" HorizontalAlignment="Left" Width="123"/>
+                                    <TextBox Text="{Binding IdUnitKerja, Mode=TwoWay, ValidatesOnDataErrors=True}" Margin="0,5,0,0" IsEnabled="{Binding EnabledIdSiswa}" Height="25" HorizontalAlignment="Left" Width="123"/>
+                                    <TextBox Text="{Binding IdUnitKerja, Mode=TwoWay, ValidatesOnDataErrors=True}" Margin="0,5,0,0" IsEnabled="{Binding EnabledIdSiswa}" Height="25" HorizontalAlignment="Left" Width="123"/>
                                 </StackPanel>
                             </Grid>
                         </StackPanel>
@@ -99,10 +115,16 @@
                     <DataGrid ItemsSource="{Binding SourceViewJurusan}" CanUserAddRows="False" CanUserDeleteRows="False" AutoGenerateColumns="False"
                   SelectedItem="{Binding Selected}" Foreground="Black" FontSize="13" Margin="10 0 10 0">
                         <DataGrid.Columns>
-                            <DataGridTextColumn Header="No" Binding="{Binding IdUnitKerja}"  Foreground="#FFEC6726" Width="10*"/>
-                            <DataGridTextColumn Header="Id Unit Kerja" Binding="{Binding IdUnitKerja}"  Foreground="#FFEC6726" Width="45*"/>
-                            <DataGridTextColumn Header="Nama Unit Kerja" Binding="{Binding NamaUnitKerja}"  Foreground="#FFEC6726" Width="45*"/>
-
+                            <DataGridTextColumn Header="Id Anggota" Binding="{Binding IdAnggota}"  Foreground="#FFEC6726"/>
+                            <DataGridTextColumn Header="Nama" Binding="{Binding Nama}"  Foreground="#FFEC6726"/>
+                            <DataGridTextColumn Header="Tempat Lahir" Binding="{Binding TempatLahir}"  Foreground="#FFEC6726"/>
+                            <DataGridTextColumn Header="Tanggal Lahir" Binding="{Binding TanggalLahir}"  Foreground="#FFEC6726"/>
+                            <DataGridTextColumn Header="Agama" Binding="{Binding Agama}"  Foreground="#FFEC6726"/>
+                            <DataGridTextColumn Header="JenisKelamin" Binding="{Binding JenisKelamin}"  Foreground="#FFEC6726"/>
+                            <DataGridTextColumn Header="Alamat" Binding="{Binding Alamat}"  Foreground="#FFEC6726"/>
+                            <DataGridTextColumn Header="AsalUniversitas" Binding="{Binding AsalUniversitas}"  Foreground="#FFEC6726"/>
+                            <DataGridTextColumn Header="AsalSekolah" Binding="{Binding AsalSekolah}"  Foreground="#FFEC6726"/>
+                            <DataGridTextColumn Header="Unit Kerja" Binding="{Binding NamaUnitKerja}"  Foreground="#FFEC6726"/>
                         </DataGrid.Columns>
                         <DataGrid.ContextMenu>
                             <ContextMenu>

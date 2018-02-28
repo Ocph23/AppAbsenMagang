@@ -1,4 +1,5 @@
-﻿using System;
+﻿using AppAbsen.ViewModels;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -19,9 +20,17 @@ namespace AppAbsen.Views
     /// </summary>
     public partial class Login : Window
     {
+        private LoginAdminViewModel ViewModel;
         public Login()
         {
             InitializeComponent();
+            ViewModel = new LoginAdminViewModel() { WindowClose = Close, WindowHide = Hide };
+            this.DataContext = ViewModel;
+        }
+
+        private void PasswordBox_PasswordChanged(object sender, RoutedEventArgs e)
+        {
+            ViewModel.context.Password=((PasswordBox)sender).Password;
         }
     }
 }

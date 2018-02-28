@@ -1,5 +1,7 @@
 ﻿using System;
 using AppAbsen.Library.Models;
+using AppAbsen.Views;
+using AppAbsen.ViewModels;
 
 namespace AppAbsen.ViewModels
 {
@@ -20,17 +22,27 @@ namespace AppAbsen.ViewModels
         private bool LoginValidate(object obj)
         {
             if (string.IsNullOrEmpty(context.UserName) || string.IsNullOrEmpty(context.Password))
-                return false;
+                return true;
             else
-                return false;
+                return true;
         }
 
         private void LoginAction(object obj)
         {
+          
           bool success=  context.Login();
+            if(success ==true)
+            {
+                var form = new MenuAdmin();
+                var vm = new MenuUtamaViewModel(context);
+                form.DataContext = vm;
+                form.Show();
+
+            }
         }
 
         public Action WindowClose { get; set; }
+        public Action WindowHide { get; internal set; }
 
         private void CancelCommanAction(object obj)
         {
