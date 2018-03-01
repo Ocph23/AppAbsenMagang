@@ -31,12 +31,17 @@ namespace AppAbsen.ViewModels
 
         private void AnggotaViewCommandAction(object obj)
         {
+            var FormAnggota = new Views.Anggota();
             var viewmodel = new ViewModels.AnggotaViewModel(UserLogin);
+            FormAnggota.DataContext = viewmodel;
         }
 
         private void UnitKerjaCommandViewAction(object obj)
         {
+            var formUnitKerja = new Views.UnitKerja();
             var viewmodel = new ViewModels.UnitKerjaViewModel(UserLogin);
+            formUnitKerja.DataContext = viewmodel;
+            formUnitKerja.Show();
         }
 
         public user UserLogin { get; }

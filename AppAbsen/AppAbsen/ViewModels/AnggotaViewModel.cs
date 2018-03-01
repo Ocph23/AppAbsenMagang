@@ -11,6 +11,7 @@ namespace AppAbsen.ViewModels
     {
 
         public user UserLogin { get; }
+        public anggota Selected { get; set; }
 
         private AnggotaContext contextAnggota;
         private string error;
@@ -55,7 +56,7 @@ namespace AppAbsen.ViewModels
 
         private void DeleteCommandAction(object obj)
         {
-            contextAnggota.Delete(this);
+            contextAnggota.Delete(this.Selected);
         }
 
         private bool DeleteCommandValidation(object obj)
@@ -73,7 +74,7 @@ namespace AppAbsen.ViewModels
 
         private void SaveCommandAction(object obj)
         {
-            contextAnggota.Add(this);
+            contextAnggota.Add(this.Selected);
         }
 
         private bool SaveCommandValidation(object obj)

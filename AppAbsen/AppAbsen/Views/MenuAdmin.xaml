@@ -41,21 +41,21 @@
                     <ColumnDefinition Width="23*"/>
                 </Grid.ColumnDefinitions>
                 <StackPanel Grid.Column="1" Grid.Row="0" Margin="0 20 0 0">
-                    <Button Content="UNIT KERJA" FontSize="16" Command="{Binding Absen}" CommandParameter="1" Height="43" HorizontalAlignment="Left" Width="106">
+                    <Button Content="UNIT KERJA" FontSize="16" Command="{Binding UnitKerjaCommandView}" CommandParameter="1" Height="43" HorizontalAlignment="Left" Width="106">
                         <Button.Effect>
                             <DropShadowEffect/>
                         </Button.Effect>
                     </Button>
                 </StackPanel>
                 <StackPanel Grid.Column="2" Grid.Row="0" Margin="0 20 0 0">
-                    <Button Content="ANGGOTA" FontSize="16" Command="{Binding Absen}" CommandParameter="1" Height="43">
+                    <Button Content="ANGGOTA" FontSize="16" Command="{Binding AnggotaViewCommand}" CommandParameter="1" Height="43">
                         <Button.Effect>
                             <DropShadowEffect/>
                         </Button.Effect>
                     </Button>
                 </StackPanel>
                 <StackPanel Grid.Column="3" Grid.Row="0" HorizontalAlignment="Right" Margin="0 20 0 0">
-                    <Button Content="LAPORAN" FontSize="16" Command="{Binding Absen}" CommandParameter="1" Height="43" HorizontalAlignment="Right" Width="106">
+                    <Button Content="LAPORAN" FontSize="16" Command="{Binding LaporanViewCommand}" CommandParameter="1" Height="43" HorizontalAlignment="Right" Width="106">
                         <Button.Effect>
                             <DropShadowEffect/>
                         </Button.Effect>
@@ -79,10 +79,10 @@
             </Grid>
         </StackPanel>
         <StackPanel Grid.Column="0" Grid.Row="3">
-            <DataGrid ItemsSource="{Binding SourceViewJurusan}" CanUserAddRows="False" CanUserDeleteRows="False" AutoGenerateColumns="False"
+            <DataGrid ItemsSource="{Binding SourceView}" CanUserAddRows="False" CanUserDeleteRows="False" AutoGenerateColumns="False"
                   SelectedItem="{Binding Selected}" Foreground="Black" FontSize="13" Margin="50 0 50 0">
                 <DataGrid.Columns>
-                    <DataGridTextColumn Header="Id_Anggota" Binding="{Binding IdAnggota}"  Foreground="#FFEC6726"/>
+                    <DataGridTextColumn Header="Id_Anggota" Binding="{Binding IdMahasiswa}"  Foreground="#FFEC6726"/>
                     <DataGridTextColumn Header="Tanggal" Binding="{Binding Tanggal}"  Foreground="#FFEC6726"/>
                     <DataGridTextColumn Header="Waktu Masuk" Binding="{Binding WaktuMasuk}"  Foreground="#FFEC6726"/>
                     <DataGridTextColumn Header="WaktuPulang" Binding="{Binding WaktuPulang}"  Foreground="#FFEC6726"/>

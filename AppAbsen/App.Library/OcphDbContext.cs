@@ -25,6 +25,7 @@ namespace AppAbsen.Library
         internal IRepository<absen> Absens { get { return new Repository<absen>(this); } }
         internal IRepository<anggota> Anggotas { get { return new Repository<anggota>(this); } }
         internal IRepository<unitkerja> UnitKerja { get { return new Repository<unitkerja>(this); } }
+        internal IRepository<user> Users { get { return new Repository<user>(this); } }
 
         public IDbConnection Connection
         {

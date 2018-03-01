@@ -8,7 +8,6 @@ namespace AppAbsen.ViewModels
     internal class LoginAdminViewModel
     {
         public UserContext context;
-
         public CommandHandler CancelCommand { get; }
         public CommandHandler LoginCommand { get; }
 
@@ -29,7 +28,6 @@ namespace AppAbsen.ViewModels
 
         private void LoginAction(object obj)
         {
-          
           bool success=  context.Login();
             if(success ==true)
             {

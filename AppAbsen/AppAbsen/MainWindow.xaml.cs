@@ -1,4 +1,5 @@
-﻿using System;
+﻿using AppAbsen.Library.DTO;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -20,10 +21,11 @@ namespace AppAbsen
     /// </summary>
     public partial class MainWindow : Window
     {
+        private user Datauser;
         public MainWindow()
         {
             InitializeComponent();
-            this.DataContext = new ViewModels.MainWindowViewModel();
+            this.DataContext = new ViewModels.MenuUtamaViewModel(Datauser);
         }
 
         internal void ShowErrorMessage(string v)
