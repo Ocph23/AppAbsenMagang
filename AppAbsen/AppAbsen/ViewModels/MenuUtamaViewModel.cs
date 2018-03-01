@@ -1,11 +1,13 @@
 ﻿using AppAbsen.Library;
 using AppAbsen.Library.DTO;
 using AppAbsen.Library.Models;
+using AppAbsen.Views;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Data;
 
@@ -13,6 +15,10 @@ namespace AppAbsen.ViewModels
 {
    public class MenuUtamaViewModel: BaseNotify
     {
+        public AbsenContext Absen { get; set; }
+        public UserContext User { get; internal set; }
+        public UnitKerjaContext UnitKerja { get; internal set; }
+        public AnggotaContext Anggota { get; set; }
         private string idAnggota;
 
         public string IdAnggota
@@ -32,18 +38,21 @@ namespace AppAbsen.ViewModels
         public ObservableCollection<absen> Source { get; set; }
         public user UserLogin { get; }
 
-        private AbsenContext absencontext;
 
         public CollectionView SourceView { get; set; }
 
         public CommandHandler AdminLoginCommand { get; }
         public CommandHandler AbsenCommand { get; }
 
-        public MenuUtamaViewModel(user user)
+        public MenuUtamaViewModel()
         {
-            UserLogin = user;
-            absencontext = new AbsenContext();
-            SourceView = (CollectionView)CollectionViewSource.GetDefaultView(absencontext.Source);
+            Thread.CurrentThread.CurrentCulture = new System.Globalization.CultureInfo("id-ID");
+            Today = DateTime.Now;
+            Absen = new AbsenContext();
+            User = new UserContext();
+            UnitKerja = new UnitKerjaContext();
+            Anggota = new AnggotaContext();
+            SourceView = (CollectionView)CollectionViewSource.GetDefaultView(Absen.Source);
             AdminLoginCommand = new CommandHandler { CanExecuteAction = x => true, ExecuteAction = AdminLoginAction };
             AbsenCommand = new CommandHandler { CanExecuteAction = AbsenCommandValidate, ExecuteAction = AbsenCommandAction };
             SourceView.Filter = TodayFilter;
@@ -74,13 +83,14 @@ namespace AppAbsen.ViewModels
         {
             try
             {
-                var today = DateTime.Now;
+                
                 var dataAbsen = new absen
                 {
                     IdMahasiswa = idAnggota, Tanggal = today
                 };
-                var isSaved = absencontext.Add(dataAbsen);
+                var isSaved = Absen.Add(dataAbsen);
                 SourceView.Refresh();
+                Helpers.ShowSuccessMessage("Anda Sudah Absen");
             }
             catch (Exception ex)
             {
@@ -92,7 +102,8 @@ namespace AppAbsen.ViewModels
 
         private void AdminLoginAction(object obj)
         {
-            var viewmodel = new ViewModels.LoginAdminViewModel();
+            var form = new Login();
+            form.Show();
         }
     }
 }

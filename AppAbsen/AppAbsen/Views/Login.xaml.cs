@@ -32,5 +32,11 @@ namespace AppAbsen.Views
         {
             ViewModel.context.Password=((PasswordBox)sender).Password;
         }
+
+        private void TextBox_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            var Text = sender as TextBox;
+            this.ViewModel.context.UserName = Text.Text;
+        }
     }
 }

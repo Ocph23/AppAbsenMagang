@@ -4,8 +4,12 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:AppAbsen.Views"
+        xmlns:l="clr-namespace:AppAbsen.Helper"
         mc:Ignorable="d"
         Title="Anggota" WindowState="Maximized">
+    <Window.Resources>
+        <l:EnumBooleanConverter  x:Key="enumBooleanConverter"/>
+    </Window.Resources>
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="15*"/>
@@ -63,16 +67,16 @@
                                     <Label Content="Nama Unit Ke" FontSize="15" FontWeight="Bold"/>
                                 </StackPanel>
                                 <StackPanel Grid.Column="1" Grid.Row="0">
-                                    <TextBox Text="{Binding Path=contextAnggota.IdMahasiswa, Mode=TwoWay, ValidatesOnDataErrors=True}" Margin="0,5,0,0" Height="25" HorizontalAlignment="Left" Width="123"/>
-                                    <TextBox Text="{Binding Path=contextAnggota.Nama, Mode=TwoWay, ValidatesOnDataErrors=True}" Margin="0,5,0,0"  Height="25" HorizontalAlignment="Left" Width="123"/>
-                                    <TextBox Text="{Binding Path=contextAnggota.TempatLahir, Mode=TwoWay, ValidatesOnDataErrors=True}" Margin="0,5,0,0" Height="25" HorizontalAlignment="Left" Width="123"/>
-                                    <TextBox Text="{Binding Path=contextAnggota.TanggalLahir, Mode=TwoWay, ValidatesOnDataErrors=True}" Margin="0,5,0,0" Height="25" HorizontalAlignment="Left" Width="123"/>
-                                    <TextBox Text="{Binding Path=contextAnggota.Agama, Mode=TwoWay, ValidatesOnDataErrors=True}" Margin="0,5,0,0" Height="25" HorizontalAlignment="Left" Width="123"/>
-                                    <TextBox Text="{Binding Path=contextAnggota.JenisKelamin, Mode=TwoWay, ValidatesOnDataErrors=True}" Margin="0,5,0,0" Height="25" HorizontalAlignment="Left" Width="123"/>
-                                    <TextBox Text="{Binding Path=contextAnggota.Alamat, Mode=TwoWay, ValidatesOnDataErrors=True}" Margin="0,5,0,0" Height="25" HorizontalAlignment="Left" Width="123"/>
-                                    <TextBox Text="{Binding Path=contextAnggota.AsalUniversitas, Mode=TwoWay, ValidatesOnDataErrors=True}" Margin="0,5,0,0" Height="25" HorizontalAlignment="Left" Width="123"/>
-                                    <TextBox Text="{Binding Path=contextAnggota.AsalSekolah, Mode=TwoWay, ValidatesOnDataErrors=True}" Margin="0,5,0,0" Height="25" HorizontalAlignment="Left" Width="123"/>
-                                    <TextBox Text="{Binding Path=contextAnggota.IdUnitKerja, Mode=TwoWay, ValidatesOnDataErrors=True}" Margin="0,5,0,0" Height="25" HorizontalAlignment="Left" Width="123"/>
+                                    <TextBox Text="{Binding IdMahasiswa, Mode=TwoWay, ValidatesOnDataErrors=True}" Margin="0,5,0,0" Height="25" HorizontalAlignment="Left" Width="123"/>
+                                    <TextBox Text="{Binding Nama, Mode=TwoWay, ValidatesOnDataErrors=True}" Margin="0,5,0,0"  Height="25" HorizontalAlignment="Left" Width="123"/>
+                                    <TextBox Text="{Binding TempatLahir, Mode=TwoWay, ValidatesOnDataErrors=True}" Margin="0,5,0,0" Height="25" HorizontalAlignment="Left" Width="123"/>
+                                    <DatePicker Text="{Binding TglLahir, Mode=TwoWay, ValidatesOnDataErrors=True}" Margin="0,5,0,0" Height="25" HorizontalAlignment="Left" Width="123"/>
+                                    <ComboBox ItemsSource="{Binding Path=DataKepercayaan}" SelectedItem="{Binding Agama, Mode=TwoWay}" Margin="0,5,0,0" Height="25" HorizontalAlignment="Left" Width="123"/>
+                                    <ComboBox ItemsSource="{Binding Path=DataGender}" SelectedItem="{Binding JenisKelamin, Mode=TwoWay}" Margin="0,5,0,0" Height="25" HorizontalAlignment="Left" Width="123"/>
+                                    <TextBox Text="{Binding Alamat, Mode=TwoWay, ValidatesOnDataErrors=True}" Margin="0,5,0,0" Height="25" HorizontalAlignment="Left" Width="123"/>
+                                    <TextBox Text="{Binding AsalUniversitas, Mode=TwoWay, ValidatesOnDataErrors=True}" Margin="0,5,0,0" Height="25" HorizontalAlignment="Left" Width="123"/>
+                                    <TextBox Text="{Binding AsalSekolah, Mode=TwoWay, ValidatesOnDataErrors=True}" Margin="0,5,0,0" Height="25" HorizontalAlignment="Left" Width="123"/>
+                                    <ComboBox ItemsSource="{Binding Path=DataUnitKerja}" SelectedItem="{Binding IdUnitKerja, Mode=TwoWay}" Margin="0,5,0,0" Height="25" HorizontalAlignment="Left" Width="123"/>
                                 </StackPanel>
                             </Grid>
                         </StackPanel>
@@ -112,13 +116,13 @@
                     </Grid>
                 </StackPanel>
                 <StackPanel Grid.Column="1" Grid.Row="0">
-                    <DataGrid ItemsSource="{Binding SourceViewJurusan}" CanUserAddRows="False" CanUserDeleteRows="False" AutoGenerateColumns="False"
+                    <DataGrid ItemsSource="{Binding SourceView}" CanUserAddRows="False" CanUserDeleteRows="False" AutoGenerateColumns="False"
                   SelectedItem="{Binding Selected}" Foreground="Black" FontSize="13" Margin="10 0 10 0">
                         <DataGrid.Columns>
-                            <DataGridTextColumn Header="Id Anggota" Binding="{Binding IdAnggota}"  Foreground="#FFEC6726"/>
+                            <DataGridTextColumn Header="Id Anggota" Binding="{Binding IdMahasiswa}"  Foreground="#FFEC6726"/>
                             <DataGridTextColumn Header="Nama" Binding="{Binding Nama}"  Foreground="#FFEC6726"/>
                             <DataGridTextColumn Header="Tempat Lahir" Binding="{Binding TempatLahir}"  Foreground="#FFEC6726"/>
-                            <DataGridTextColumn Header="Tanggal Lahir" Binding="{Binding TanggalLahir}"  Foreground="#FFEC6726"/>
+                            <DataGridTextColumn Header="Tanggal Lahir" Binding="{Binding TglLahir}"  Foreground="#FFEC6726"/>
                             <DataGridTextColumn Header="Agama" Binding="{Binding Agama}"  Foreground="#FFEC6726"/>
                             <DataGridTextColumn Header="JenisKelamin" Binding="{Binding JenisKelamin}"  Foreground="#FFEC6726"/>
                             <DataGridTextColumn Header="Alamat" Binding="{Binding Alamat}"  Foreground="#FFEC6726"/>

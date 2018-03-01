@@ -37,13 +37,20 @@ namespace AppAbsen.Library.Models
         {
             using (var db = new OcphDbContext())
             {
-                if (db.UnitKerja.Insert(item))
+                var a = db.UnitKerja.Where(o => o.IdUnitKerja == item.IdUnitKerja).ToList();
+                if (a.Count == 0)
                 {
-                    Source.Add(item);
-                    return true;
+                    if (db.UnitKerja.Insert(item))
+                    {
+                        Source.Add(item);
+                        return true;
+                    }
+                    else
+                        return false;
                 }
                 else
                     return false;
+                
             }
         }
 

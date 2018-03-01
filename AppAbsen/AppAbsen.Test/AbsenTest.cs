@@ -15,7 +15,7 @@ namespace AppAbsen.Test
 
         public AbsenTest()
         {
-            context = new MenuUtamaViewModel(new Library.DTO.user());
+            context = new MenuUtamaViewModel();
         }
 
 

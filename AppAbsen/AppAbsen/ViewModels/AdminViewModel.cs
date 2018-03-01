@@ -26,22 +26,23 @@ namespace AppAbsen.ViewModels
 
         private void LaporanViewCommandAction(object obj)
         {
-            var viewmodel = new ViewModels.LaporanViewModel(UserLogin);
+            var viewmodel = new ViewModels.LaporanViewModel(this.UserLogin);
         }
 
         private void AnggotaViewCommandAction(object obj)
         {
             var FormAnggota = new Views.Anggota();
-            var viewmodel = new ViewModels.AnggotaViewModel(UserLogin);
+            var viewmodel = new ViewModels.AnggotaViewModel(this.UserLogin);
             FormAnggota.DataContext = viewmodel;
+            FormAnggota.ShowDialog();
         }
 
         private void UnitKerjaCommandViewAction(object obj)
         {
             var formUnitKerja = new Views.UnitKerja();
-            var viewmodel = new ViewModels.UnitKerjaViewModel(UserLogin);
+            var viewmodel = new ViewModels.UnitKerjaViewModel(this.UserLogin);
             formUnitKerja.DataContext = viewmodel;
-            formUnitKerja.Show();
+            formUnitKerja.ShowDialog();
         }
 
         public user UserLogin { get; }

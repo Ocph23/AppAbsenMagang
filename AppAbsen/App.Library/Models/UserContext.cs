@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Linq;
 using AppAbsen.Library.DTO;
 using DAL;
 
@@ -7,11 +9,19 @@ namespace AppAbsen.Library.Models
     
     public class UserContext : user
     {
-        public string UserName { get; set; }
+        public List<user> datauser = new List<user>();
         public bool Login()
         {
-            UserName = this.UserName;
-            return true;
+            
+            using (var db = new OcphDbContext())
+            {
+                datauser = db.Users.Where(o=>o.UserName==this.UserName && Password==this.Password).ToList();
+                if (datauser.Count == 0)
+                    return false;
+                else
+                    return true;
+            }
+           
         }
     }
 }

@@ -7,21 +7,20 @@ namespace AppAbsen.ViewModels
 {
     internal class LoginAdminViewModel
     {
-        public UserContext context;
+        public UserContext context = new UserContext();
         public CommandHandler CancelCommand { get; }
         public CommandHandler LoginCommand { get; }
 
         public LoginAdminViewModel()
         {
-            context = AppAbsen.Helpers.GetMainViewModel().User;
             CancelCommand = new CommandHandler { CanExecuteAction = x => true, ExecuteAction = CancelCommanAction };
             LoginCommand = new CommandHandler { CanExecuteAction = LoginValidate, ExecuteAction = LoginAction };
         }
 
         private bool LoginValidate(object obj)
         {
-            if (string.IsNullOrEmpty(context.UserName) || string.IsNullOrEmpty(context.Password))
-                return true;
+            if (string.IsNullOrEmpty(context.UserName) && (string.IsNullOrEmpty(context.Password)))
+                return false;
             else
                 return true;
         }
@@ -29,14 +28,16 @@ namespace AppAbsen.ViewModels
         private void LoginAction(object obj)
         {
           bool success=  context.Login();
-            if(success ==true)
+            if (success == true)
             {
                 var form = new MenuAdmin();
-                var vm = new MenuUtamaViewModel(context);
+                var vm = new AdminViewModel(context);
                 form.DataContext = vm;
-                form.Show();
-
+                form.ShowDialog();
+                WindowClose();
             }
+            else
+                Helpers.ShowErrorMessage("User dan Password tidak sesuai");
         }
 
         public Action WindowClose { get; set; }

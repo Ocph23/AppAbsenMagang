@@ -10,12 +10,12 @@ namespace AppAbsen
 {
     public class Helpers
     {
-        public static MainWindowViewModel GetMainViewModel()
+        public static MenuUtamaViewModel GetMainViewModel()
         {
             //
             if (App.Current == null)
-                return new MainWindowViewModel();
-            return App.Current.Windows[0].DataContext as MainWindowViewModel;
+                return new MenuUtamaViewModel();
+            return App.Current.Windows[0].DataContext as MenuUtamaViewModel;
         }
 
         public static void ShowErrorMessage(string v)
@@ -24,10 +24,17 @@ namespace AppAbsen
             main.ShowErrorMessage(v);
         }
 
+        public static void ShowSuccessMessage(string v)
+        {
+            var main = GetMain();
+            main.ShowSuccessMessage(v);
+        }
+
         public static MainWindow GetMain()
         {
             return App.Current.Windows[0] as MainWindow;
         }
+        
 
     }
 }

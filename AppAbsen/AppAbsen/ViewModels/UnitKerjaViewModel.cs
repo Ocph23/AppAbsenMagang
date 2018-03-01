@@ -34,7 +34,12 @@ namespace AppAbsen.ViewModels
         public unitkerja SelectedItem
         {
             get { return selectedItem; }
-            set { SetProperty(ref selectedItem, value); }
+            set
+            {
+                this.IdUnitKerja = value.IdUnitKerja;
+                this.NamaUnitKerja = value.NamaUnitKerja;
+                SetProperty(ref selectedItem, value);
+            }
         }
 
 
@@ -44,7 +49,7 @@ namespace AppAbsen.ViewModels
             contextUnitKerja = Helpers.GetMainViewModel().UnitKerja;
             SourceView = (CollectionView)CollectionViewSource.GetDefaultView(contextUnitKerja.Source);
             NewCommand = new CommandHandler { CanExecuteAction = x => true, ExecuteAction = NewCommandAction };
-            SaveCommand = new CommandHandler { CanExecuteAction = SaveCommandValidation, ExecuteAction = SaveCommandAction };
+            SaveCommand = new CommandHandler { CanExecuteAction = x => true, ExecuteAction = SaveCommandAction };
             EditCommand = new CommandHandler { CanExecuteAction = EditCommandValidation, ExecuteAction = EditCommandAction };
             DeleteCommand = new CommandHandler { CanExecuteAction = DeleteCommandValidation, ExecuteAction = DeleteCommandAction };
         }
@@ -52,6 +57,8 @@ namespace AppAbsen.ViewModels
         private void DeleteCommandAction(object obj)
         {
             contextUnitKerja.Delete(this);
+            SourceView.Refresh();
+            Helpers.ShowSuccessMessage("Unit Kerja Berhasil di Hapus");
         }
 
         private bool DeleteCommandValidation(object obj)
@@ -65,6 +72,8 @@ namespace AppAbsen.ViewModels
         private void EditCommandAction(object obj)
         {
             contextUnitKerja.Update(this);
+            SourceView.Refresh();
+            Helpers.ShowSuccessMessage("Unit Kerja Berhasil di rubah");
         }
 
         private bool EditCommandValidation(object obj)
@@ -77,16 +86,16 @@ namespace AppAbsen.ViewModels
 
         private void SaveCommandAction(object obj)
         {
-            contextUnitKerja.Add(this);
+            if (contextUnitKerja.Add(this) == true)
+            {
+                SourceView.Refresh();
+                Helpers.ShowSuccessMessage("Data Unit Kerja Tersimpan");
+            }
+            else
+                Helpers.ShowErrorMessage("Data Sudah Ada");
         }
 
-        private bool SaveCommandValidation(object obj)
-        {
-            if (string.IsNullOrEmpty(IdUnitKerja) || string.IsNullOrEmpty(NamaUnitKerja))
-                return false;
-            else
-                return true;
-        }
+        
 
         private void NewCommandAction(object obj)
         {

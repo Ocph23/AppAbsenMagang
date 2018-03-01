@@ -1,4 +1,5 @@
 ﻿using AppAbsen.Library.DTO;
+using AppAbsen.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -21,16 +22,30 @@ namespace AppAbsen
     /// </summary>
     public partial class MainWindow : Window
     {
-        private user Datauser;
         public MainWindow()
         {
             InitializeComponent();
-            this.DataContext = new ViewModels.MenuUtamaViewModel(Datauser);
+            this.VM = new ViewModels.MenuUtamaViewModel();
+            this.DataContext = VM;
         }
+
+        public MenuUtamaViewModel VM { get; private set; }
 
         internal void ShowErrorMessage(string v)
         {
             MessageBox.Show(v, "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+        }
+
+        internal void ShowSuccessMessage(string v)
+        {
+            MessageBox.Show(v, "Success", MessageBoxButton.OK, MessageBoxImage.Information);
+        }
+
+        private void TextBox_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            var Text = sender as TextBox;
+            this.VM.IdAnggota = Text.Text;
+
         }
     }
 }
