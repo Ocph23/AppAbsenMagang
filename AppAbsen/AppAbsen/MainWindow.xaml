@@ -143,15 +143,16 @@
             <DataGrid ItemsSource="{Binding SourceView}" CanUserAddRows="False" CanUserDeleteRows="False" AutoGenerateColumns="False"
                   SelectedItem="{Binding Selected}" Foreground="Black" FontSize="13" Margin="50 0 50 0">
                 <DataGrid.Columns>
-                    <DataGridTextColumn Header="Id_Anggota" Binding="{Binding IdMahasiswa}"  Foreground="#FFEC6726"/>
-                    <DataGridTextColumn Header="Tanggal" Binding="{Binding Tanggal}"  Foreground="#FFEC6726"/>
-                    <DataGridTextColumn Header="Waktu Masuk" Binding="{Binding WaktuMasuk}"  Foreground="#FFEC6726"/>
-                    <DataGridTextColumn Header="WaktuPulang" Binding="{Binding WaktuPulang}"  Foreground="#FFEC6726"/>
-                    <DataGridTextColumn Header="Absen" Binding="{Binding Absen}"  Foreground="#FFEC6726"/>
-                    <DataGridTextColumn Header="Alpa" Binding="{Binding Alpa}"  Foreground="#FFEC6726"/>
-                    <DataGridTextColumn Header="Ijin" Binding="{Binding Ijin}"  Foreground="#FFEC6726"/>
-                    <DataGridTextColumn Header="Sakit" Binding="{Binding Sakit}"  Foreground="#FFEC6726"/>
-                    <DataGridTextColumn Header="Keterangan" Binding="{Binding Keterangan}"  Foreground="#FFEC6726"/>
+                    <DataGridTextColumn Width="*" Header="Id_Anggota" Binding="{Binding IdMahasiswa}"  Foreground="#FFEC6726"/>
+                    <DataGridTextColumn Width="*" Header="Nama" Binding="{Binding Anggota.Nama,StringFormat=dd MMMM yyyy}"  Foreground="#FFEC6726"/>
+                    <DataGridTextColumn Width="*" Header="Tanggal" Binding="{Binding Tanggal,StringFormat=dd MMMM yyyy}"  Foreground="#FFEC6726"/>
+                    <DataGridTextColumn Width="*" Header="Waktu Masuk" Binding="{Binding WaktuMasuk}"  Foreground="#FFEC6726"/>
+                    <DataGridTextColumn Width="*" Header="WaktuPulang" Binding="{Binding WaktuPulang}"  Foreground="#FFEC6726"/>
+                    <DataGridTextColumn Width="*" Header="Hadir" Binding="{Binding Hadir}"  Foreground="#FFEC6726"/>
+                    <DataGridTextColumn Width="*" Header="Alpa" Binding="{Binding Alpa}"  Foreground="#FFEC6726"/>
+                    <DataGridTextColumn Width="*" Header="Ijin" Binding="{Binding Ijin}"  Foreground="#FFEC6726"/>
+                    <DataGridTextColumn Width="*" Header="Sakit" Binding="{Binding Sakit}"  Foreground="#FFEC6726"/>
+                    <DataGridTextColumn Width="*" Header="Keterangan" Binding="{Binding Keterangan}"  Foreground="#FFEC6726"/>
                 </DataGrid.Columns>
                 <DataGrid.ContextMenu>
                     <ContextMenu>

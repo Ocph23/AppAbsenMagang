@@ -55,7 +55,11 @@ namespace AppAbsen.Library.Models
                         throw new SystemException("Data Mahasiswa Tidak Ditemukan");
                     else
                     {
-                        var dataAbsen = Source.Where(O => O.IdMahasiswa == absen.IdMahasiswa && O.Tanggal == absen.Tanggal).FirstOrDefault();
+                        var dataAbsen = Source.Where(O => 
+                        O.IdMahasiswa == absen.IdMahasiswa && 
+                        O.Tanggal.Day == absen.Tanggal.Day &&
+                        O.Tanggal.Month==absen.Tanggal.Month &&
+                        O.Tanggal.Year==absen.Tanggal.Year ).FirstOrDefault();
                         DateTime today = DateTime.Now;
                         var result = CanAbsen(dataAbsen);
                         if (result == StatusBisaAbsen.Datang)

@@ -27,7 +27,7 @@ namespace AppAbsen.ViewModels
         public CommandHandler DeleteCommand { get; }
         public List<Kepercayaan> DataKepercayaan { get; set; }
         public List<Gender> DataGender { get; set; }
-        public List<string> DataUnitKerja  { get; set; }
+        public List<unitkerja> DataUnitKerja  { get; set; }
         public string Error => error;
 
 
@@ -60,11 +60,7 @@ namespace AppAbsen.ViewModels
             this.UserLogin = userLogin;
             contextAnggota = Helpers.GetMainViewModel().Anggota;
             contextUnitKerja = Helpers.GetMainViewModel().UnitKerja;
-            DataUnitKerja = new List<string>();
-            foreach(var value in contextUnitKerja.Source)
-            {
-                DataUnitKerja.Add(value.NamaUnitKerja.ToString());
-            }
+            DataUnitKerja = contextUnitKerja.Source;
             SourceView = (CollectionView)CollectionViewSource.GetDefaultView(contextAnggota.Source);
             NewCommand = new CommandHandler { CanExecuteAction = x => true, ExecuteAction = NewCommandAction };
             SaveCommand = new CommandHandler { CanExecuteAction = SaveCommandValidation, ExecuteAction = SaveCommandAction };

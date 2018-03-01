@@ -6,141 +6,109 @@
         xmlns:local="clr-namespace:AppAbsen.Views"
         xmlns:l="clr-namespace:AppAbsen.Helper"
         mc:Ignorable="d"
-        Title="Anggota" WindowState="Maximized">
+        Title="Anggota" WindowState="Maximized" Height="635.5" Width="846">
     <Window.Resources>
         <l:EnumBooleanConverter  x:Key="enumBooleanConverter"/>
     </Window.Resources>
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="15*"/>
-            <RowDefinition Height="7*"/>
-            <RowDefinition Height="78*"/>
+            <RowDefinition Height="10*"/>
+            <RowDefinition Height="75*"/>
         </Grid.RowDefinitions>
         <StackPanel Grid.Row="0" Grid.Column="0">
             <Label Content="INPUT DATA ANGGOTA" FontSize="30" FontWeight="Bold" HorizontalAlignment="Center" Margin="198,10,192,0" Width="370"/>
         </StackPanel>
-        <StackPanel Grid.Column="0" Grid.Row="1">
-            <Grid>
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="60*"/>
-                    <ColumnDefinition Width="15*"/>
-                    <ColumnDefinition Width="25*"/>
-                </Grid.ColumnDefinitions>
-                <StackPanel Grid.Column="1" Grid.Row="0">
-                    <Label Content="Search" HorizontalAlignment="Right" FontSize="24" FontStyle="Italic" FontFamily="Monotype Corsiva"/>
-                </StackPanel>
-                <StackPanel Grid.Column="2" Grid.Row="0">
-                    <TextBox Text="{Binding IdMahasiswa, Mode=TwoWay, ValidatesOnDataErrors=True}" Margin="0 3 0 0" HorizontalAlignment="Left" Width="166" Height="30"/>
-                </StackPanel>
+        <WrapPanel Grid.Column="0" Grid.Row="1" HorizontalAlignment="Right" Margin="10">
+            <Label Content="Search" HorizontalAlignment="Right" FontSize="24" FontStyle="Italic" FontFamily="Monotype Corsiva"/>
+            <TextBox Text="{Binding IdMahasiswa, Mode=TwoWay, ValidatesOnDataErrors=True}" Margin="3" HorizontalAlignment="Left" Width="166" Height="30"/>
+        </WrapPanel>
+        <Grid  Grid.Row="2" Grid.Column="0" Margin="10">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="35*"/>
+                <ColumnDefinition Width="65*"/>
+            </Grid.ColumnDefinitions>
+            <Grid Grid.Column="0" Grid.Row="0">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="363*"/>
+                    <RowDefinition Height="71*"/>
+                </Grid.RowDefinitions>
+                <Grid Grid.Column="0" Grid.Row="0">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="50*"/>
+                        <ColumnDefinition Width="50*"/>
+                    </Grid.ColumnDefinitions>
+                    <StackPanel Grid.Column="0" Grid.Row="0">
+                        <Label Content="IdAnggota" FontSize="15" FontWeight="Bold"/>
+                        <Label Content="Nama" FontSize="15" FontWeight="Bold"/>
+                        <Label Content="Tempat Lahir" FontSize="15" FontWeight="Bold"/>
+                        <Label Content="Tanggal Lahir" FontSize="15" FontWeight="Bold"/>
+                        <Label Content="Agama" FontSize="15" FontWeight="Bold"/>
+                        <Label Content="Jenis Kelamin" FontSize="15" FontWeight="Bold"/>
+                        <Label Content="Alamat" FontSize="15" FontWeight="Bold"/>
+                        <Label Content="Asal Universitas" FontSize="15" FontWeight="Bold"/>
+                        <Label Content="Asal Sekolah" FontSize="15" FontWeight="Bold"/>
+                        <Label Content="Nama Unit Ke" FontSize="15" FontWeight="Bold"/>
+                    </StackPanel>
+                    <StackPanel Grid.Column="1" Grid.Row="0">
+                        <TextBox Text="{Binding IdMahasiswa, Mode=TwoWay, ValidatesOnDataErrors=True}" Margin="0,5,0,0" Height="25" HorizontalAlignment="Left" Width="123"/>
+                        <TextBox Text="{Binding Nama, Mode=TwoWay, ValidatesOnDataErrors=True}" Margin="0,5,0,0"  Height="25" HorizontalAlignment="Left" Width="123"/>
+                        <TextBox Text="{Binding TempatLahir, Mode=TwoWay, ValidatesOnDataErrors=True}" Margin="0,5,0,0" Height="25" HorizontalAlignment="Left" Width="123"/>
+                        <DatePicker Text="{Binding TglLahir, Mode=TwoWay, ValidatesOnDataErrors=True}" Margin="0,5,0,0" Height="25" HorizontalAlignment="Left" Width="123"/>
+                        <ComboBox ItemsSource="{Binding Path=DataKepercayaan}" SelectedItem="{Binding Agama, Mode=TwoWay}" Margin="0,5,0,0" Height="25" HorizontalAlignment="Left" Width="123"/>
+                        <ComboBox ItemsSource="{Binding Path=DataGender}" SelectedItem="{Binding JenisKelamin, Mode=TwoWay}" Margin="0,5,0,0" Height="25" HorizontalAlignment="Left" Width="123"/>
+                        <TextBox Text="{Binding Alamat, Mode=TwoWay, ValidatesOnDataErrors=True}" Margin="0,5,0,0" Height="25" HorizontalAlignment="Left" Width="123"/>
+                        <TextBox Text="{Binding AsalUniversitas, Mode=TwoWay, ValidatesOnDataErrors=True}" Margin="0,5,0,0" Height="25" HorizontalAlignment="Left" Width="123"/>
+                        <TextBox Text="{Binding AsalSekolah, Mode=TwoWay, ValidatesOnDataErrors=True}" Margin="0,5,0,0" Height="25" HorizontalAlignment="Left" Width="123"/>
+                        <ComboBox ItemsSource="{Binding Path=DataUnitKerja}" SelectedValue="{Binding IdUnitKerja, Mode=TwoWay}" 
+                                  SelectedValuePath="IdUnitKerja" DisplayMemberPath="NamaUnitKerja"
+                                  Margin="0,5,0,0" Height="25" HorizontalAlignment="Left" Width="123"/>
+                    </StackPanel>
+                </Grid>
+                <WrapPanel HorizontalAlignment="Center" Grid.Column="0" Grid.Row="1" Margin="54,10" Width="178">
+                    <Button Margin="3" Content="Simpan" FontSize="12" Command="{Binding SaveCommand}" CommandParameter="1" Width="53">
+                        <Button.Effect>
+                            <DropShadowEffect/>
+                        </Button.Effect>
+                    </Button>
+                    <Button Margin="3" Content="Edit" FontSize="12" Command="{Binding EditCommand}" CommandParameter="1" Width="53">
+                        <Button.Effect>
+                            <DropShadowEffect/>
+                        </Button.Effect>
+                    </Button>
+                    <Button Margin="3" Content="Simpan" FontSize="12" Command="{Binding DeleteCommand}" CommandParameter="1" Width="53" >
+                        <Button.Effect>
+                            <DropShadowEffect/>
+                        </Button.Effect>
+                    </Button>
+                </WrapPanel>
+
             </Grid>
-        </StackPanel>
-        <StackPanel Grid.Row="2" Grid.Column="0" Margin="15 0 15 0">
-            <Grid>
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="35*"/>
-                    <ColumnDefinition Width="65*"/>
-                </Grid.ColumnDefinitions>
-
-                <StackPanel Grid.Column="0" Grid.Row="0">
-                    <Grid>
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="75*"/>
-                            <RowDefinition Height="20*"/>
-                            <RowDefinition Height="5*"/>
-                        </Grid.RowDefinitions>
-                        <StackPanel Grid.Column="0" Grid.Row="0">
-                            <Grid>
-                                <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="50*"/>
-                                    <ColumnDefinition Width="50*"/>
-                                </Grid.ColumnDefinitions>
-                                <StackPanel Grid.Column="0" Grid.Row="0">
-                                    <Label Content="IdAnggota" FontSize="15" FontWeight="Bold"/>
-                                    <Label Content="Nama" FontSize="15" FontWeight="Bold"/>
-                                    <Label Content="Tempat Lahir" FontSize="15" FontWeight="Bold"/>
-                                    <Label Content="Tanggal Lahir" FontSize="15" FontWeight="Bold"/>
-                                    <Label Content="Agama" FontSize="15" FontWeight="Bold"/>
-                                    <Label Content="Jenis Kelamin" FontSize="15" FontWeight="Bold"/>
-                                    <Label Content="Alamat" FontSize="15" FontWeight="Bold"/>
-                                    <Label Content="Asal Universitas" FontSize="15" FontWeight="Bold"/>
-                                    <Label Content="Asal Sekolah" FontSize="15" FontWeight="Bold"/>
-                                    <Label Content="Nama Unit Ke" FontSize="15" FontWeight="Bold"/>
-                                </StackPanel>
-                                <StackPanel Grid.Column="1" Grid.Row="0">
-                                    <TextBox Text="{Binding IdMahasiswa, Mode=TwoWay, ValidatesOnDataErrors=True}" Margin="0,5,0,0" Height="25" HorizontalAlignment="Left" Width="123"/>
-                                    <TextBox Text="{Binding Nama, Mode=TwoWay, ValidatesOnDataErrors=True}" Margin="0,5,0,0"  Height="25" HorizontalAlignment="Left" Width="123"/>
-                                    <TextBox Text="{Binding TempatLahir, Mode=TwoWay, ValidatesOnDataErrors=True}" Margin="0,5,0,0" Height="25" HorizontalAlignment="Left" Width="123"/>
-                                    <DatePicker Text="{Binding TglLahir, Mode=TwoWay, ValidatesOnDataErrors=True}" Margin="0,5,0,0" Height="25" HorizontalAlignment="Left" Width="123"/>
-                                    <ComboBox ItemsSource="{Binding Path=DataKepercayaan}" SelectedItem="{Binding Agama, Mode=TwoWay}" Margin="0,5,0,0" Height="25" HorizontalAlignment="Left" Width="123"/>
-                                    <ComboBox ItemsSource="{Binding Path=DataGender}" SelectedItem="{Binding JenisKelamin, Mode=TwoWay}" Margin="0,5,0,0" Height="25" HorizontalAlignment="Left" Width="123"/>
-                                    <TextBox Text="{Binding Alamat, Mode=TwoWay, ValidatesOnDataErrors=True}" Margin="0,5,0,0" Height="25" HorizontalAlignment="Left" Width="123"/>
-                                    <TextBox Text="{Binding AsalUniversitas, Mode=TwoWay, ValidatesOnDataErrors=True}" Margin="0,5,0,0" Height="25" HorizontalAlignment="Left" Width="123"/>
-                                    <TextBox Text="{Binding AsalSekolah, Mode=TwoWay, ValidatesOnDataErrors=True}" Margin="0,5,0,0" Height="25" HorizontalAlignment="Left" Width="123"/>
-                                    <ComboBox ItemsSource="{Binding Path=DataUnitKerja}" SelectedItem="{Binding IdUnitKerja, Mode=TwoWay}" Margin="0,5,0,0" Height="25" HorizontalAlignment="Left" Width="123"/>
-                                </StackPanel>
-                            </Grid>
-                        </StackPanel>
-                        <StackPanel Grid.Column="0" Grid.Row="1" Margin="0 20 0 0">
-                            <Grid>
-                                <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="15*"/>
-                                    <ColumnDefinition Width="25*"/>
-                                    <ColumnDefinition Width="20*"/>
-                                    <ColumnDefinition Width="25*"/>
-                                    <ColumnDefinition Width="15*"/>
-                                </Grid.ColumnDefinitions>
-                                <StackPanel Grid.Column="1" Grid.Row="0">
-                                    <Button Content="Simpan" FontSize="12" Command="{Binding SaveCommand}" CommandParameter="1" Height="25" Width="53" HorizontalAlignment="Left" Margin="6,0,0,0">
-                                        <Button.Effect>
-                                            <DropShadowEffect/>
-                                        </Button.Effect>
-                                    </Button>
-                                </StackPanel>
-                                <StackPanel Grid.Column="2" Grid.Row="0">
-                                    <Button Content="Edit" FontSize="12" Command="{Binding EditCommand}" CommandParameter="1" Height="25">
-                                        <Button.Effect>
-                                            <DropShadowEffect/>
-                                        </Button.Effect>
-                                    </Button>
-                                </StackPanel>
-                                <StackPanel Grid.Column="3" Grid.Row="0">
-                                    <Button Content="Simpan" FontSize="12" Command="{Binding DeleteCommand}" CommandParameter="1" Height="25" Width="53" HorizontalAlignment="Right" Margin="0,0,7,0">
-                                        <Button.Effect>
-                                            <DropShadowEffect/>
-                                        </Button.Effect>
-                                    </Button>
-                                </StackPanel>
-                            </Grid>
-                        </StackPanel>
-
-                    </Grid>
-                </StackPanel>
-                <StackPanel Grid.Column="1" Grid.Row="0">
-                    <DataGrid ItemsSource="{Binding SourceView}" CanUserAddRows="False" CanUserDeleteRows="False" AutoGenerateColumns="False"
+            <StackPanel Grid.Column="1" Grid.Row="0">
+                <DataGrid ItemsSource="{Binding SourceView}" CanUserAddRows="False" CanUserDeleteRows="False" AutoGenerateColumns="False"
                   SelectedItem="{Binding Selected}" Foreground="Black" FontSize="13" Margin="10 0 10 0">
-                        <DataGrid.Columns>
-                            <DataGridTextColumn Header="Id Anggota" Binding="{Binding IdMahasiswa}"  Foreground="#FFEC6726"/>
-                            <DataGridTextColumn Header="Nama" Binding="{Binding Nama}"  Foreground="#FFEC6726"/>
-                            <DataGridTextColumn Header="Tempat Lahir" Binding="{Binding TempatLahir}"  Foreground="#FFEC6726"/>
-                            <DataGridTextColumn Header="Tanggal Lahir" Binding="{Binding TglLahir}"  Foreground="#FFEC6726"/>
-                            <DataGridTextColumn Header="Agama" Binding="{Binding Agama}"  Foreground="#FFEC6726"/>
-                            <DataGridTextColumn Header="JenisKelamin" Binding="{Binding JenisKelamin}"  Foreground="#FFEC6726"/>
-                            <DataGridTextColumn Header="Alamat" Binding="{Binding Alamat}"  Foreground="#FFEC6726"/>
-                            <DataGridTextColumn Header="AsalUniversitas" Binding="{Binding AsalUniversitas}"  Foreground="#FFEC6726"/>
-                            <DataGridTextColumn Header="AsalSekolah" Binding="{Binding AsalSekolah}"  Foreground="#FFEC6726"/>
-                            <DataGridTextColumn Header="Unit Kerja" Binding="{Binding NamaUnitKerja}"  Foreground="#FFEC6726"/>
-                        </DataGrid.Columns>
-                        <DataGrid.ContextMenu>
-                            <ContextMenu>
-                                <MenuItem Header="Delete" Command="{Binding DeleteCommand}">
-                                </MenuItem>
-                            </ContextMenu>
-                        </DataGrid.ContextMenu>
-                    </DataGrid>
-                </StackPanel>
+                    <DataGrid.Columns>
+                        <DataGridTextColumn Header="Id Anggota" Binding="{Binding IdMahasiswa}"  Foreground="#FFEC6726"/>
+                        <DataGridTextColumn Header="Nama" Binding="{Binding Nama}"  Foreground="#FFEC6726"/>
+                        <DataGridTextColumn Header="Tempat Lahir" Binding="{Binding TempatLahir}"  Foreground="#FFEC6726"/>
+                        <DataGridTextColumn Header="Tanggal Lahir" Binding="{Binding TglLahir}"  Foreground="#FFEC6726"/>
+                        <DataGridTextColumn Header="Agama" Binding="{Binding Agama}"  Foreground="#FFEC6726"/>
+                        <DataGridTextColumn Header="JenisKelamin" Binding="{Binding JenisKelamin}"  Foreground="#FFEC6726"/>
+                        <DataGridTextColumn Header="Alamat" Binding="{Binding Alamat}"  Foreground="#FFEC6726"/>
+                        <DataGridTextColumn Header="AsalUniversitas" Binding="{Binding AsalUniversitas}"  Foreground="#FFEC6726"/>
+                        <DataGridTextColumn Header="AsalSekolah" Binding="{Binding AsalSekolah}"  Foreground="#FFEC6726"/>
+                        <DataGridTextColumn Header="Unit Kerja" Binding="{Binding NamaUnitKerja}"  Foreground="#FFEC6726"/>
+                    </DataGrid.Columns>
+                    <DataGrid.ContextMenu>
+                        <ContextMenu>
+                            <MenuItem Header="Delete" Command="{Binding DeleteCommand}">
+                            </MenuItem>
+                        </ContextMenu>
+                    </DataGrid.ContextMenu>
+                </DataGrid>
+            </StackPanel>
 
-            </Grid>
-        </StackPanel>
+        </Grid>
 
     </Grid>
 </Window>
