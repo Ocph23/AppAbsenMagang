@@ -111,6 +111,8 @@ namespace AppAbsen.Library.DTO
             }
         }
 
+        public string NamaUnitKerja { get; set; }
+
         private string _idmahasiswa;
         private string _nama;
         private string _tempatlahir;

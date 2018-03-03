@@ -26,7 +26,23 @@ namespace AppAbsen.Library.Models
 
             using (var db = new OcphDbContext())
             {
-                return db.Anggotas.Select().ToList();
+                var datakirim = (from a in db.Anggotas.Select()
+                                 join b in db.UnitKerja.Select() on a.IdUnitKerja equals b.IdUnitKerja
+                                 select new anggota
+                                 {
+                                     IdMahasiswa = a.IdMahasiswa,
+                                     Nama = a.Nama,
+                                     TempatLahir = a.TempatLahir,
+                                     TglLahir = a.TglLahir,
+                                     JenisKelamin = a.JenisKelamin,
+                                     Agama = a.Agama,
+                                     Alamat = a.Alamat,
+                                     AsalUniversitas = a.AsalUniversitas,
+                                     AsalSekolah = a.AsalSekolah,
+                                     IdUnitKerja = b.IdUnitKerja,
+                                     NamaUnitKerja = b.NamaUnitKerja
+                                 }).ToList();
+                return datakirim;
             }
         }
 
