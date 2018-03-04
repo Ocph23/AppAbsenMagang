@@ -46,6 +46,7 @@ namespace AppAbsen.ViewModels
 
         public AnggotaViewModel(user userLogin)
         {
+            this.TglLahir = DateTime.Now;
             DataKepercayaan = new List<Kepercayaan>
             {
                 Kepercayaan.Islam,

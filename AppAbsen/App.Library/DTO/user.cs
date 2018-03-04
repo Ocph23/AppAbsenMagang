@@ -18,7 +18,6 @@ namespace AppAbsen.Library.DTO
             set {SetProperty(ref userName ,value); }
         }
 
-        [PrimaryKey("Password")]
         [DbColumn("Password")]
         public string Password
         {
@@ -26,7 +25,6 @@ namespace AppAbsen.Library.DTO
             set { SetProperty(ref password, value); }
         }
 
-        [PrimaryKey("ConfirmPassword")]
         [DbColumn("ConfirmPassword")]
         public string ConfirmPassword
         {

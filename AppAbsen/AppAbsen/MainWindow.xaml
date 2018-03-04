@@ -4,40 +4,8 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:AppAbsen"
-        mc:Ignorable="d"
+        mc:Ignorable="d" Style="{StaticResource WindowStyle}"
         Title="MainWindow" WindowState="Maximized">
-    <Window.Resources>
-        <Style x:Key="myLabel" TargetType="Label">
-            <Setter Property="Margin" Value="0 5 0 0"/>
-            <Setter Property="Height" Value="27"/>
-            <Setter Property="Foreground" Value="Black"/>
-
-        </Style>
-        <Style x:Key="myTextBox" TargetType="TextBox">
-            <Setter Property="Width" Value="50"/>
-            <Setter Property="Margin" Value="5"/>
-            <Setter Property="Height" Value="23"/>
-            <Setter Property="HorizontalAlignment" Value="Left"/>
-            <Setter Property="Background" Value="#FF333333"/>
-            <Setter Property="Foreground" Value="#FFEC6726"/>
-        </Style>
-        <Style x:Key="btnAdd" TargetType="Button">
-            <Setter Property="Foreground" Value="white"/>
-            <Setter Property="Background" Value="#FF4ED37C"/>
-            <Setter Property="Height" Value="30"/>
-            <Setter Property="Width" Value="100"/>
-            <Setter Property="HorizontalAlignment" Value="Center"/>
-        </Style>
-        <Style x:Key="btnCancel" TargetType="Button">
-            <Setter Property="Foreground" Value="white"/>
-            <Setter Property="Background" Value="#FFEC6726"/>
-            <Setter Property="Height" Value="30"/>
-            <Setter Property="Width" Value="100"/>
-            <Setter Property="HorizontalAlignment" Value="Center"/>
-        </Style>
-
-    </Window.Resources>
-
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="140*"/>
@@ -57,14 +25,14 @@
                     <ColumnDefinition Width="70*"/>
                 </Grid.ColumnDefinitions>
                 <StackPanel Grid.Column="0" Grid.Row="0">
-                    <Label Content="Bulan" Style="{StaticResource myLabel}"/>
-                    <Label Content="Tanggal" Style="{StaticResource myLabel}"/>
-                    <Label Content="Jam" Style="{StaticResource myLabel}"/>
+                    <Label Content="Bulan" />
+                    <Label Content="Tanggal" />
+                    <Label Content="Jam" />
                 </StackPanel>
                 <StackPanel Grid.Column="1" Grid.Row="0">
-                    <Label Content=":" Style="{StaticResource myLabel}"/>
-                    <Label Content=":" Style="{StaticResource myLabel}"/>
-                    <Label Content=":" Style="{StaticResource myLabel}"/>
+                    <Label Content=":" />
+                    <Label Content=":" />
+                    <Label Content=":" />
                 </StackPanel>
                 <StackPanel Grid.Column="2" Grid.Row="0">
                     <TextBlock Text="{Binding Today,StringFormat=MMMM}"/>
@@ -73,91 +41,43 @@
                 </StackPanel>
             </Grid>
         </StackPanel>
-        <StackPanel Grid.Column="1" Grid.Row="0">
-            <Grid>
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="90*"/>
-                    <RowDefinition Height="10*"/>
-                </Grid.RowDefinitions>
-                <StackPanel Grid.Column="0" Grid.Row="0">
-                    <Image Source="img/LogoJayapura.png" Height="124"/>
-                </StackPanel>
-                <StackPanel Grid.Column="0" Grid.Row="1">
-                    <Label Content="SILAHKAN ABSEN" FontSize="18" FontWeight="Bold" Margin="1,0,2,0" HorizontalAlignment="Center"/>
-                </StackPanel>
-            </Grid>
+        <Image Source="img/LogoJayapura.png" Margin="5" Grid.Column="1" />
+        <Label Content="SILAHKAN ABSEN" HorizontalAlignment="Center" FontSize="15" Grid.Column="1" Grid.Row="1" FontWeight="Bold" Margin="10" />
 
+        <StackPanel Grid.Column="2" Grid.Row="0" Margin="10" >
+            <Button Height="35" Width="100" Content="Login" HorizontalAlignment="Right" Command="{Binding AdminLoginCommand}" CommandParameter="1"/>
         </StackPanel>
 
-        <StackPanel Grid.Column="2" Grid.Row="0">
-            <Grid>
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="70*"/>
-                    <ColumnDefinition Width="30*"/>
-                </Grid.ColumnDefinitions>
-                <StackPanel Grid.Column="1" Grid.Row="0">
-                    <Button Content="Login" Command="{Binding AdminLoginCommand}" CommandParameter="1"/>
-                </StackPanel>
-            </Grid>
-
-        </StackPanel>
-
-        <StackPanel Grid.Column="0" Grid.Row="1" Margin="15 0 0 0">
+        <WrapPanel VerticalAlignment="Center" Grid.Column="0" Grid.Row="1" Margin="15 0 0 0">
             <Label Content="ID_Anggota" FontSize="16" FontWeight="Bold"/>
             <TextBox TextChanged="TextBox_TextChanged" HorizontalAlignment="Left" Width="166" Height="25"/>
-        </StackPanel>
+        </WrapPanel>
 
-        <StackPanel Grid.Column="1" Grid.Row="1">
-            <Grid>
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="20*"/>
-                    <ColumnDefinition Width="60*"/>
-                    <ColumnDefinition Width="20*"/>
-                </Grid.ColumnDefinitions>
-                
-            </Grid>
 
-        </StackPanel>
 
-        <StackPanel Grid.Column="2" Grid.Row="1">
-            <Grid>
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="35*"/>
-                    <ColumnDefinition Width="30*"/>
-                    <ColumnDefinition Width="35*"/>
-                </Grid.ColumnDefinitions>
-                <StackPanel Grid.Column="1" Grid.Row="0">
-                    <Button Content="ABSEN" FontSize="16" Command="{Binding AbsenCommand}" CommandParameter="1" Height="47" Margin="-2,0">
-                        <Button.Effect>
-                            <DropShadowEffect/>
-                        </Button.Effect>
-                    </Button>
-                </StackPanel>
-            </Grid>
-
+        <StackPanel Grid.Column="2" Grid.Row="1" VerticalAlignment="Center" Width="150">
+            <Button  Content="ABSEN" FontSize="16" Command="{Binding AbsenCommand}" CommandParameter="1" Height="40" />
         </StackPanel>
-        <StackPanel Grid.Column="0" Grid.Row="2" Grid.ColumnSpan="3">
-            <DataGrid ItemsSource="{Binding SourceView}" CanUserAddRows="False" CanUserDeleteRows="False" AutoGenerateColumns="False"
-                  SelectedItem="{Binding Selected}" Foreground="Black" FontSize="13" Margin="50 0 50 0">
-                <DataGrid.Columns>
-                    <DataGridTextColumn Width="*" Header="Id_Anggota" Binding="{Binding IdMahasiswa}"  Foreground="#FFEC6726"/>
-                    <DataGridTextColumn Width="*" Header="Nama" Binding="{Binding Anggota.Nama,StringFormat=dd MMMM yyyy}"  Foreground="#FFEC6726"/>
-                    <DataGridTextColumn Width="*" Header="Tanggal" Binding="{Binding Tanggal,StringFormat=dd MMMM yyyy}"  Foreground="#FFEC6726"/>
-                    <DataGridTextColumn Width="*" Header="Waktu Masuk" Binding="{Binding WaktuMasuk}"  Foreground="#FFEC6726"/>
-                    <DataGridTextColumn Width="*" Header="WaktuPulang" Binding="{Binding WaktuPulang}"  Foreground="#FFEC6726"/>
-                    <DataGridTextColumn Width="*" Header="Hadir" Binding="{Binding Hadir}"  Foreground="#FFEC6726"/>
-                    <DataGridTextColumn Width="*" Header="Alpa" Binding="{Binding Alpa}"  Foreground="#FFEC6726"/>
-                    <DataGridTextColumn Width="*" Header="Ijin" Binding="{Binding Ijin}"  Foreground="#FFEC6726"/>
-                    <DataGridTextColumn Width="*" Header="Sakit" Binding="{Binding Sakit}"  Foreground="#FFEC6726"/>
-                    <DataGridTextColumn Width="*" Header="Keterangan" Binding="{Binding Keterangan}"  Foreground="#FFEC6726"/>
-                </DataGrid.Columns>
-                <DataGrid.ContextMenu>
-                    <ContextMenu>
-                        <MenuItem Header="Delete" Command="{Binding DeleteCommand}">
-                        </MenuItem>
-                    </ContextMenu>
-                </DataGrid.ContextMenu>
-            </DataGrid>
-        </StackPanel>
+        <DataGrid Margin="10" Grid.Column="0" Grid.Row="2" Grid.ColumnSpan="3" ItemsSource="{Binding SourceView}" CanUserAddRows="False" CanUserDeleteRows="False" AutoGenerateColumns="False"
+                  SelectedItem="{Binding Selected}" Foreground="Black" FontSize="13" >
+            <DataGrid.Columns>
+                <DataGridTextColumn Width="*" Header="Id_Anggota" Binding="{Binding IdMahasiswa}"  Foreground="#FFEC6726"/>
+                <DataGridTextColumn Width="*" Header="Nama" Binding="{Binding Anggota.Nama,StringFormat=dd MMMM yyyy}"  Foreground="#FFEC6726"/>
+                <DataGridTextColumn Width="*" Header="Tanggal" Binding="{Binding Tanggal,StringFormat=dd MMMM yyyy}"  Foreground="#FFEC6726"/>
+                <DataGridTextColumn Width="*" Header="Waktu Masuk" Binding="{Binding WaktuMasuk}"  Foreground="#FFEC6726"/>
+                <DataGridTextColumn Width="*" Header="WaktuPulang" Binding="{Binding WaktuPulang}"  Foreground="#FFEC6726"/>
+                <DataGridTextColumn Width="*" Header="Hadir" Binding="{Binding Hadir}"  Foreground="#FFEC6726"/>
+                <DataGridTextColumn Width="*" Header="Alpa" Binding="{Binding Alpa}"  Foreground="#FFEC6726"/>
+                <DataGridTextColumn Width="*" Header="Ijin" Binding="{Binding Ijin}"  Foreground="#FFEC6726"/>
+                <DataGridTextColumn Width="*" Header="Sakit" Binding="{Binding Sakit}"  Foreground="#FFEC6726"/>
+                <DataGridTextColumn Width="*" Header="Keterangan" Binding="{Binding Keterangan}"  Foreground="#FFEC6726"/>
+            </DataGrid.Columns>
+            <DataGrid.ContextMenu>
+                <ContextMenu>
+                    <MenuItem Header="Delete" Command="{Binding DeleteCommand}">
+                    </MenuItem>
+                </ContextMenu>
+            </DataGrid.ContextMenu>
+        </DataGrid>
     </Grid>
 </Window>
