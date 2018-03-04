@@ -26,7 +26,10 @@ namespace AppAbsen.ViewModels
 
         private void LaporanViewCommandAction(object obj)
         {
+            var FormLaporan = new Views.Laporan();
             var viewmodel = new ViewModels.LaporanViewModel(this.UserLogin);
+            FormLaporan.DataContext = viewmodel;
+            FormLaporan.Show();
         }
 
         private void AnggotaViewCommandAction(object obj)
