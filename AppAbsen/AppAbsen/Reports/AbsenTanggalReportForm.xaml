@@ -1,0 +1,27 @@
+﻿<Window x:Class="AppAbsen.Reports.AbsenTanggalReportForm"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:AppAbsen.Reports"
+        xmlns:rv="clr-namespace:Microsoft.Reporting.WinForms;assembly=Microsoft.ReportViewer.WinForms"
+        mc:Ignorable="d"
+        Title="AbsenTanggalReportForm" WindowState="Maximized">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="41*"/>
+            <RowDefinition Height="463*"/>
+        </Grid.RowDefinitions>
+        <WindowsFormsHost Margin="10" Grid.Row="1">
+            <rv:ReportViewer x:Name="reportViewer"></rv:ReportViewer>
+        </WindowsFormsHost>
+        <Grid Grid.Column="0" Grid.Row="0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="86"/>
+                <ColumnDefinition Width="549"/>
+            </Grid.ColumnDefinitions>
+            <Label Grid.Row="0" Grid.Column="0" Content="Tanggal" HorizontalAlignment="Left" VerticalAlignment="Bottom" Margin="10,0,0,0" FontSize="14" Height="29" Width="77"/>
+            <DatePicker Grid.Row="0" Grid.Column="1" SelectedDateChanged="DatePicker_SelectedDateChanged"  VerticalAlignment="Bottom" Margin="1,0,428,2" Height="24"/>
+        </Grid>
+    </Grid>
+</Window>

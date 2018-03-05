@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using App.Library.DTO;
 using AppAbsen.Library.DTO;
 
 namespace AppAbsen.Library.Models
@@ -17,7 +18,6 @@ namespace AppAbsen.Library.Models
                 return source; }
             set { source = value; }
         }
-
 
         private List<absen> GetSource()
         {

@@ -1,4 +1,5 @@
-﻿using Microsoft.Reporting.WinForms;
+﻿using App.Library.Models;
+using Microsoft.Reporting.WinForms;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -16,40 +17,39 @@ using System.Windows.Shapes;
 namespace AppAbsen.Reports
 {
     /// <summary>
-    /// Interaction logic for AnggotaReportForm.xaml
+    /// Interaction logic for AbsenBulanReportForm.xaml
     /// </summary>
-    public partial class AnggotaReportForm : Window
+    public partial class AbsenBulanReportForm : Window
     {
-        public AnggotaReportForm()
+        public DateTime Datapass { get; set; }
+        public AbsenBulanReportForm()
         {
             InitializeComponent();
-            this.Loaded += AnggotaReportForm_Loaded;
         }
-
-        private void AnggotaReportForm_Loaded(object sender, RoutedEventArgs e)
+        public void DatePicker_SelectedDateChanged(object sender, SelectionChangedEventArgs e)
         {
-            var Data = Helpers.GetMainViewModel();
+            Datapass = ((DatePicker)sender).SelectedDate.Value;
+            var Data = new RekapAbsenContext();
             reportViewer.LocalReport.DataSources.Clear();
             ReportDataSource DataSet1 = new ReportDataSource
             {
                 Name = "DataSet1", // Name of the DataSet we set in .rdlc
-                Value = Data.Anggota.Source
+                Value = Data.GetSource(Datapass)
             };
             // reportViewer.LocalReport.DataSources= list;
-            reportViewer.LocalReport.ReportEmbeddedResource = "AppAbsen.Reports.AnggotaLayout.rdlc";
+            reportViewer.LocalReport.ReportEmbeddedResource = "AppAbsen.Reports.AbsenBulanLayout.rdlc";
             reportViewer.LocalReport.DataSources.Add(DataSet1);
             reportViewer.SetDisplayMode(DisplayMode.PrintLayout);
             reportViewer.ZoomMode = ZoomMode.PageWidth;
             System.Drawing.Printing.PageSettings ps = new System.Drawing.Printing.PageSettings();
-            ps.Landscape = true;
+            ps.Landscape = false;
             ps.PaperSize = new System.Drawing.Printing.PaperSize("A4", 827, 1170);
             ps.PaperSize.RawKind = (int)System.Drawing.Printing.PaperKind.A4;
-            ps.Margins.Top = 1;
-            ps.Margins.Bottom = 1;
-            ps.Margins.Left = 1;
-            ps.Margins.Right = 1;
             reportViewer.SetPageSettings(ps);
             reportViewer.RefreshReport();
+
         }
+
+       
     }
 }

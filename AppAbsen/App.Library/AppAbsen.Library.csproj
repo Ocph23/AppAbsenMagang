@@ -53,12 +53,16 @@
     <Compile Include="BaseNotify.cs" />
     <Compile Include="Class1.cs" />
     <Compile Include="DTO\absen.cs" />
+    <Compile Include="DTO\absentanggal.cs" />
     <Compile Include="DTO\anggota.cs" />
+    <Compile Include="DTO\rekapabsen.cs" />
     <Compile Include="DTO\unitkerja.cs" />
     <Compile Include="DTO\user.cs" />
     <Compile Include="EnumCollections.cs" />
     <Compile Include="Models\AbsenContext.cs" />
+    <Compile Include="Models\AbsenTanggalContext.cs" />
     <Compile Include="Models\AnggotaContext.cs" />
+    <Compile Include="Models\RekapAbsenContext.cs" />
     <Compile Include="Models\UnitKerjaContext.cs" />
     <Compile Include="Models\UserContext.cs" />
     <Compile Include="OcphDbContext.cs" />

@@ -16,27 +16,27 @@ using System.Windows.Shapes;
 namespace AppAbsen.Reports
 {
     /// <summary>
-    /// Interaction logic for AnggotaReportForm.xaml
+    /// Interaction logic for UnitKerjaReportForm.xaml
     /// </summary>
-    public partial class AnggotaReportForm : Window
+    public partial class UnitKerjaReportForm : Window
     {
-        public AnggotaReportForm()
+        public UnitKerjaReportForm()
         {
             InitializeComponent();
-            this.Loaded += AnggotaReportForm_Loaded;
+            this.Loaded += UnitKerjaReportForm_Loaded;
         }
 
-        private void AnggotaReportForm_Loaded(object sender, RoutedEventArgs e)
+        private void UnitKerjaReportForm_Loaded(object sender, RoutedEventArgs e)
         {
-            var Data = Helpers.GetMainViewModel();
+            var Data = Helpers.GetMainViewModel().UnitKerja;
             reportViewer.LocalReport.DataSources.Clear();
             ReportDataSource DataSet1 = new ReportDataSource
             {
                 Name = "DataSet1", // Name of the DataSet we set in .rdlc
-                Value = Data.Anggota.Source
+                Value = Data.Source
             };
             // reportViewer.LocalReport.DataSources= list;
-            reportViewer.LocalReport.ReportEmbeddedResource = "AppAbsen.Reports.AnggotaLayout.rdlc";
+            reportViewer.LocalReport.ReportEmbeddedResource = "AppAbsen.Reports.UnitKerjaLayout.rdlc";
             reportViewer.LocalReport.DataSources.Add(DataSet1);
             reportViewer.SetDisplayMode(DisplayMode.PrintLayout);
             reportViewer.ZoomMode = ZoomMode.PageWidth;

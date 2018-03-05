@@ -50,6 +50,9 @@
       <HintPath>..\packages\Microsoft.ReportViewer.Runtime.WinForms.12.0.2402.15\lib\Microsoft.ReportViewer.WinForms.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="Microsoft.SqlServer.Types, Version=12.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.SqlServer.Types.12.0.5000.0\lib\net40\Microsoft.SqlServer.Types.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
@@ -78,9 +81,19 @@
     <Compile Include="Helper\EnumBooleanConverter.cs" />
     <Compile Include="MyExtentions.cs" />
     <Compile Include="Helpers.cs" />
+    <Compile Include="Reports\AbsenBulanReportForm.xaml.cs">
+      <DependentUpon>AbsenBulanReportForm.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Reports\AbsenTanggalReportForm.xaml.cs">
+      <DependentUpon>AbsenTanggalReportForm.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Reports\AnggotaReportForm.xaml.cs">
       <DependentUpon>AnggotaReportForm.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Reports\UnitKerjaReportForm.xaml.cs">
+      <DependentUpon>UnitKerjaReportForm.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="SqlServerTypes\Loader.cs" />
     <Compile Include="ViewModels\AdminViewModel.cs" />
     <Compile Include="ViewModels\AnggotaViewModel.cs" />
     <Compile Include="ViewModels\LaporanViewModel.cs" />
@@ -116,7 +129,19 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="Reports\AbsenBulanReportForm.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Reports\AbsenTanggalReportForm.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Reports\AnggotaReportForm.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Reports\UnitKerjaReportForm.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -163,9 +188,16 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <EmbeddedResource Include="Reports\AbsenBulanLayout.rdlc" />
+    <EmbeddedResource Include="Reports\AbsenTanggalLayout.rdlc" />
     <EmbeddedResource Include="Reports\AnggotaLayout.rdlc" />
+    <EmbeddedResource Include="Reports\UnitKerjaLayout.rdlc" />
     <None Include="packages.config" />
+    <None Include="Properties\DataSources\App.Library.DTO.rekapabsen.datasource" />
+    <None Include="Properties\DataSources\AppAbsen.Library.DTO.absen.datasource" />
     <None Include="Properties\DataSources\AppAbsen.Library.DTO.anggota.datasource" />
+    <None Include="Properties\DataSources\AppAbsen.Library.DTO.unitkerja.datasource" />
+    <None Include="Properties\DataSources\AppAbsen.Library.DTO.user.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -185,6 +217,24 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="img\LogoJayapura.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Microsoft\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="SqlServerTypes\readme.htm" />
+    <Content Include="SqlServerTypes\x64\msvcr100.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SqlServerTypes\x64\SqlServerSpatial120.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SqlServerTypes\x86\msvcr100.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SqlServerTypes\x86\SqlServerSpatial120.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

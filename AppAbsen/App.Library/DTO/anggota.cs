@@ -112,6 +112,7 @@ namespace AppAbsen.Library.DTO
         }
 
         public string NamaUnitKerja { get; set; }
+        public List<absen> Absens { get; internal set; }
 
         private string _idmahasiswa;
         private string _nama;
