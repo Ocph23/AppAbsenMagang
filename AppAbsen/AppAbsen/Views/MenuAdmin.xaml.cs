@@ -1,4 +1,6 @@
-﻿using System;
+﻿using AppAbsen.Library.DTO;
+using AppAbsen.ViewModels;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -22,6 +24,16 @@ namespace AppAbsen.Views
         public MenuAdmin()
         {
             InitializeComponent();
+        }
+
+        private void TextBox_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            TextBox text = (TextBox)sender;
+            if (text != null && !string.IsNullOrEmpty(text.Text))
+            {
+                var ViewModel = (AdminViewModel)this.DataContext;
+                ViewModel.Search = text.Text;
+            }
         }
     }
 }

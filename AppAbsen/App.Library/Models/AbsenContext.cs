@@ -88,6 +88,18 @@ namespace AppAbsen.Library.Models
             
         }
 
+        public bool CanIjin(absen ab)
+        {
+            var a = source.Where(o => o.Tanggal.Day == ab.Tanggal.Day && o.Tanggal.Month == ab.Tanggal.Month
+            && o.Tanggal.Year == ab.Tanggal.Year && o.Ijin == ab.Ijin);
+            if(a != null)
+            {
+                return true;
+            }
+            return false;
+
+        }
+
         private StatusBisaAbsen CanAbsen(absen ab)
         {
             TimeSpan time = DateTime.Now.TimeOfDay;
@@ -114,7 +126,7 @@ namespace AppAbsen.Library.Models
                     {
                         if (ab.WaktuPulang != new TimeSpan(0, 0, 0))
                             throw new SystemException("Anda Sudah Absen Pulang Hari Ini");
-                        else if (time <= new TimeSpan(16, 30, 0))
+                        else if (time <= new TimeSpan(15, 00, 0))
                         {
                             throw new SystemException("Maaf Belum Saatnya Absen Pulang");
                         }
@@ -130,7 +142,7 @@ namespace AppAbsen.Library.Models
                 {
                     if (ab.WaktuPulang != new TimeSpan(0, 0, 0))
                         throw new SystemException("Anda Sudah Absen Pulang Hari Ini");
-                    else if (time <= new TimeSpan(16, 30, 0))
+                    else if (time <= new TimeSpan(15, 0, 0))
                     {
                         throw new SystemException("Maaf Belum Saatnya Absen Pulang");
                     }

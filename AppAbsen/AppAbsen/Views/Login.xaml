@@ -4,7 +4,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:AppAbsen.Views"
-        mc:Ignorable="d"
+        mc:Ignorable="d" Style="{StaticResource WindowStyle}"
         Title="Login" Height="316.5" Width="328.5">
     <Grid>
         <Grid.RowDefinitions>

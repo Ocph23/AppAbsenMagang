@@ -13,18 +13,23 @@ namespace AppAbsen.ViewModels
     {
 
         public user UserLogin { get; }
+        public AnggotaContext Angota { get; set; }
         public anggota Selected { get; set; }
         public List<unitkerja> DataUnit { get; set; }
 
         private AnggotaContext contextAnggota;
         public UnitKerjaContext contextUnitKerja;
         private string error;
+        private string _serach;
+        private DateTime today;
 
         public CollectionView SourceView { get; }
         public CommandHandler NewCommand { get; }
         public CommandHandler SaveCommand { get; }
         public CommandHandler EditCommand { get; }
         public CommandHandler DeleteCommand { get; }
+        public CommandHandler IjinCommand { get; }
+        public CommandHandler SakitCommand { get; }
         public List<Kepercayaan> DataKepercayaan { get; set; }
         public List<Gender> DataGender { get; set; }
         public List<unitkerja> DataUnitKerja  { get; set; }
@@ -42,7 +47,27 @@ namespace AppAbsen.ViewModels
             }
         }
 
-       
+        public string Search
+        {
+            get
+            {
+                return _serach;
+            }
+
+            set
+            {
+                SetProperty(ref _serach, value);
+                SourceView.Refresh();
+            }
+        }
+
+        public DateTime Today
+        {
+            get { return today; }
+            set { SetProperty(ref today, value); }
+        }
+
+
 
         public AnggotaViewModel(user userLogin)
         {
@@ -57,16 +82,54 @@ namespace AppAbsen.ViewModels
                 Kepercayaan.KonghuChu
             };
             DataGender = new List<Gender> { Gender.Pria, Gender.Wanita };
-            
+            Today = DateTime.Now;
             this.UserLogin = userLogin;
             contextAnggota = Helpers.GetMainViewModel().Anggota;
             contextUnitKerja = Helpers.GetMainViewModel().UnitKerja;
             DataUnitKerja = contextUnitKerja.Source;
             SourceView = (CollectionView)CollectionViewSource.GetDefaultView(contextAnggota.Source);
+            SourceView.Filter = FilterfromSearch;
             NewCommand = new CommandHandler { CanExecuteAction = x => true, ExecuteAction = NewCommandAction };
             SaveCommand = new CommandHandler { CanExecuteAction = SaveCommandValidation, ExecuteAction = SaveCommandAction };
             EditCommand = new CommandHandler { CanExecuteAction = EditCommandValidation, ExecuteAction = EditCommandAction };
             DeleteCommand = new CommandHandler { CanExecuteAction = DeleteCommandValidation, ExecuteAction = DeleteCommandAction };
+            IjinCommand = new CommandHandler { CanExecuteAction = IjinCommandValidate, ExecuteAction = IjinCommandAction };
+            SakitCommand = new CommandHandler { CanExecuteAction = SakitCommandValidate, ExecuteAction = SakitCommandAction };
+        }
+
+        private void SakitCommandAction(object obj)
+        {
+            throw new NotImplementedException();
+        }
+
+        private bool SakitCommandValidate(object obj)
+        {
+            throw new NotImplementedException();
+        }
+
+        private bool IjinCommandValidate(object obj)
+        {
+            throw new NotImplementedException();
+        }
+
+        private void IjinCommandAction(object obj)
+        {
+            throw new NotImplementedException();
+        }
+
+        private bool FilterfromSearch(object obj)
+        {
+            var data = (anggota)obj;
+            if (data != null && Search != null)
+            {
+                if (data.Nama.Contains(Search) || data.IdMahasiswa.Contains(Search))
+                {
+                    return true;
+                }
+            }
+            else
+                return true;
+            return false;
         }
 
         private void EditCommandAction(object obj)

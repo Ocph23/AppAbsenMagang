@@ -40,14 +40,13 @@ namespace AppAbsen.Reports
             reportViewer.LocalReport.DataSources.Add(DataSet1);
             reportViewer.SetDisplayMode(DisplayMode.PrintLayout);
             reportViewer.ZoomMode = ZoomMode.PageWidth;
-            System.Drawing.Printing.PageSettings ps = new System.Drawing.Printing.PageSettings();
-            ps.Landscape = true;
-            ps.PaperSize = new System.Drawing.Printing.PaperSize("A4", 827, 1170);
+            System.Drawing.Printing.PageSettings ps = new System.Drawing.Printing.PageSettings
+            {
+                Landscape = false,
+                PaperSize = new System.Drawing.Printing.PaperSize("A4", 827, 1170)
+            };
             ps.PaperSize.RawKind = (int)System.Drawing.Printing.PaperKind.A4;
-            ps.Margins.Top = 1;
-            ps.Margins.Bottom = 1;
-            ps.Margins.Left = 1;
-            ps.Margins.Right = 1;
+            
             reportViewer.SetPageSettings(ps);
             reportViewer.RefreshReport();
         }

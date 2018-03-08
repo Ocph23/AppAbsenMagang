@@ -193,6 +193,7 @@
     <EmbeddedResource Include="Reports\AnggotaLayout.rdlc" />
     <EmbeddedResource Include="Reports\UnitKerjaLayout.rdlc" />
     <None Include="packages.config" />
+    <None Include="Properties\DataSources\App.Library.DTO.absentanggal.datasource" />
     <None Include="Properties\DataSources\App.Library.DTO.rekapabsen.datasource" />
     <None Include="Properties\DataSources\AppAbsen.Library.DTO.absen.datasource" />
     <None Include="Properties\DataSources\AppAbsen.Library.DTO.anggota.datasource" />

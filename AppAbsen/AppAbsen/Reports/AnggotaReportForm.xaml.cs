@@ -46,7 +46,7 @@ namespace AppAbsen.Reports
             ps.PaperSize.RawKind = (int)System.Drawing.Printing.PaperKind.A4;
             ps.Margins.Top = 1;
             ps.Margins.Bottom = 1;
-            ps.Margins.Left = 1;
+            ps.Margins.Left = 20;
             ps.Margins.Right = 1;
             reportViewer.SetPageSettings(ps);
             reportViewer.RefreshReport();

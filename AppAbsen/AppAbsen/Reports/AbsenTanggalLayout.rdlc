@@ -6,16 +6,16 @@
         <TablixBody>
           <TablixColumns>
             <TablixColumn>
-              <Width>4.37854cm</Width>
+              <Width>3.34667cm</Width>
             </TablixColumn>
             <TablixColumn>
-              <Width>2.94979cm</Width>
+              <Width>2.93878cm</Width>
             </TablixColumn>
             <TablixColumn>
-              <Width>2.5cm</Width>
+              <Width>2.8175cm</Width>
             </TablixColumn>
             <TablixColumn>
-              <Width>3.16146cm</Width>
+              <Width>2.87951cm</Width>
             </TablixColumn>
           </TablixColumns>
           <TablixRows>
@@ -31,7 +31,7 @@
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value>Anggota</Value>
+                              <Value>Nama</Value>
                               <Style>
                                 <FontSize>11pt</FontSize>
                                 <FontWeight>Bold</FontWeight>
@@ -72,7 +72,7 @@
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value>Waktu Masuk</Value>
+                              <Value>Jam Masuk</Value>
                               <Style>
                                 <FontSize>11pt</FontSize>
                                 <FontWeight>Bold</FontWeight>
@@ -113,7 +113,7 @@
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value>Waktu Pulang</Value>
+                              <Value>Jam Pulang</Value>
                               <Style>
                                 <FontSize>11pt</FontSize>
                                 <FontWeight>Bold</FontWeight>
@@ -193,14 +193,14 @@
               <TablixCells>
                 <TablixCell>
                   <CellContents>
-                    <Textbox Name="Anggota">
+                    <Textbox Name="Nama">
                       <CanGrow>true</CanGrow>
                       <KeepTogether>true</KeepTogether>
                       <Paragraphs>
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value>=Fields!Anggota.Value</Value>
+                              <Value>=Fields!Nama.Value</Value>
                               <Style>
                                 <FontWeight>Normal</FontWeight>
                                 <Color>#333333</Color>
@@ -212,7 +212,7 @@
                           </Style>
                         </Paragraph>
                       </Paragraphs>
-                      <rd:DefaultName>Anggota</rd:DefaultName>
+                      <rd:DefaultName>Nama</rd:DefaultName>
                       <Style>
                         <Border>
                           <Style>None</Style>
@@ -228,14 +228,14 @@
                 </TablixCell>
                 <TablixCell>
                   <CellContents>
-                    <Textbox Name="WaktuMasuk">
+                    <Textbox Name="JamMasuk">
                       <CanGrow>true</CanGrow>
                       <KeepTogether>true</KeepTogether>
                       <Paragraphs>
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value>=Fields!WaktuMasuk.Value</Value>
+                              <Value>=Fields!JamMasuk.Value</Value>
                               <Style>
                                 <FontWeight>Normal</FontWeight>
                                 <Color>#333333</Color>
@@ -247,7 +247,7 @@
                           </Style>
                         </Paragraph>
                       </Paragraphs>
-                      <rd:DefaultName>WaktuMasuk</rd:DefaultName>
+                      <rd:DefaultName>JamMasuk</rd:DefaultName>
                       <Style>
                         <Border>
                           <Style>None</Style>
@@ -263,14 +263,14 @@
                 </TablixCell>
                 <TablixCell>
                   <CellContents>
-                    <Textbox Name="WaktuPulang">
+                    <Textbox Name="JamPulang">
                       <CanGrow>true</CanGrow>
                       <KeepTogether>true</KeepTogether>
                       <Paragraphs>
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value>=Fields!WaktuPulang.Value</Value>
+                              <Value>=Fields!JamPulang.Value</Value>
                               <Style>
                                 <FontWeight>Normal</FontWeight>
                                 <Color>#333333</Color>
@@ -282,7 +282,7 @@
                           </Style>
                         </Paragraph>
                       </Paragraphs>
-                      <rd:DefaultName>WaktuPulang</rd:DefaultName>
+                      <rd:DefaultName>JamPulang</rd:DefaultName>
                       <Style>
                         <Border>
                           <Style>None</Style>
@@ -354,10 +354,10 @@
           </TablixMembers>
         </TablixRowHierarchy>
         <DataSetName>DataSet1</DataSetName>
-        <Top>2.96333cm</Top>
-        <Left>1.63724cm</Left>
+        <Top>2.40771cm</Top>
+        <Left>2.28768cm</Left>
         <Height>1.2cm</Height>
-        <Width>12.98979cm</Width>
+        <Width>11.98245cm</Width>
         <Style>
           <Border>
             <Style>None</Style>
@@ -412,7 +412,7 @@
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Textbox9</rd:DefaultName>
-        <Left>3.63771cm</Left>
+        <Left>4.28815cm</Left>
         <Height>1.89646cm</Height>
         <Width>9.93417cm</Width>
         <ZIndex>1</ZIndex>
@@ -430,7 +430,7 @@
         <Source>Embedded</Source>
         <Value>LogoJayapura</Value>
         <Sizing>FitProportional</Sizing>
-        <Left>1.63724cm</Left>
+        <Left>2.28768cm</Left>
         <Height>1.89646cm</Height>
         <Width>1.42062cm</Width>
         <ZIndex>2</ZIndex>
@@ -440,8 +440,20 @@
           </Border>
         </Style>
       </Image>
+      <Line Name="Line1">
+        <Top>2.03412cm</Top>
+        <Left>14.91933cm</Left>
+        <Height>0cm</Height>
+        <Width>-13.62604cm</Width>
+        <ZIndex>3</ZIndex>
+        <Style>
+          <Border>
+            <Style>Solid</Style>
+          </Border>
+        </Style>
+      </Line>
     </ReportItems>
-    <Height>2.12869in</Height>
+    <Height>2in</Height>
     <Style />
   </Body>
   <Width>6.5in</Width>
@@ -457,74 +469,46 @@
   </Page>
   <AutoRefresh>0</AutoRefresh>
   <DataSources>
-    <DataSource Name="AppAbsenLibraryDTO">
+    <DataSource Name="AppLibraryDTO">
       <ConnectionProperties>
         <DataProvider>System.Data.DataSet</DataProvider>
         <ConnectString>/* Local Connection */</ConnectString>
       </ConnectionProperties>
-      <rd:DataSourceID>8920efa8-6d1c-458b-891b-44542e81dd98</rd:DataSourceID>
+      <rd:DataSourceID>67d32a9d-d194-4866-a34c-893c3dbc9227</rd:DataSourceID>
     </DataSource>
   </DataSources>
   <DataSets>
     <DataSet Name="DataSet1">
       <Query>
-        <DataSourceName>AppAbsenLibraryDTO</DataSourceName>
+        <DataSourceName>AppLibraryDTO</DataSourceName>
         <CommandText>/* Local Query */</CommandText>
       </Query>
       <Fields>
-        <Field Name="Alpa">
-          <DataField>Alpa</DataField>
-          <rd:TypeName>AppAbsen.Library.Status</rd:TypeName>
-        </Field>
-        <Field Name="Anggota">
-          <DataField>Anggota</DataField>
-          <rd:TypeName>AppAbsen.Library.DTO.anggota</rd:TypeName>
-        </Field>
-        <Field Name="Bulan">
-          <DataField>Bulan</DataField>
-          <rd:TypeName>System.String</rd:TypeName>
-        </Field>
-        <Field Name="Hadir">
-          <DataField>Hadir</DataField>
-          <rd:TypeName>AppAbsen.Library.Status</rd:TypeName>
-        </Field>
-        <Field Name="IdAbsen">
-          <DataField>IdAbsen</DataField>
-          <rd:TypeName>System.Int32</rd:TypeName>
-        </Field>
         <Field Name="IdMahasiswa">
           <DataField>IdMahasiswa</DataField>
           <rd:TypeName>System.String</rd:TypeName>
         </Field>
-        <Field Name="Ijin">
-          <DataField>Ijin</DataField>
-          <rd:TypeName>AppAbsen.Library.Status</rd:TypeName>
+        <Field Name="JamMasuk">
+          <DataField>JamMasuk</DataField>
+          <rd:TypeName>System.TimeSpan</rd:TypeName>
+        </Field>
+        <Field Name="JamPulang">
+          <DataField>JamPulang</DataField>
+          <rd:TypeName>System.TimeSpan</rd:TypeName>
         </Field>
         <Field Name="Keterangan">
           <DataField>Keterangan</DataField>
-          <rd:TypeName>System.String</rd:TypeName>
-        </Field>
-        <Field Name="Sakit">
-          <DataField>Sakit</DataField>
           <rd:TypeName>AppAbsen.Library.Status</rd:TypeName>
         </Field>
-        <Field Name="Tanggal">
-          <DataField>Tanggal</DataField>
-          <rd:TypeName>System.DateTime</rd:TypeName>
-        </Field>
-        <Field Name="WaktuMasuk">
-          <DataField>WaktuMasuk</DataField>
-          <rd:TypeName>System.TimeSpan</rd:TypeName>
-        </Field>
-        <Field Name="WaktuPulang">
-          <DataField>WaktuPulang</DataField>
-          <rd:TypeName>System.TimeSpan</rd:TypeName>
+        <Field Name="Nama">
+          <DataField>Nama</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
         </Field>
       </Fields>
       <rd:DataSetInfo>
-        <rd:DataSetName>AppAbsen.Library.DTO</rd:DataSetName>
-        <rd:TableName>absen</rd:TableName>
-        <rd:ObjectDataSourceType>AppAbsen.Library.DTO.absen, App.Library, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</rd:ObjectDataSourceType>
+        <rd:DataSetName>App.Library.DTO</rd:DataSetName>
+        <rd:TableName>absentanggal</rd:TableName>
+        <rd:ObjectDataSourceType>App.Library.DTO.absentanggal, App.Library, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</rd:ObjectDataSourceType>
       </rd:DataSetInfo>
     </DataSet>
   </DataSets>
@@ -912,5 +896,5 @@ XYq7FXYq7FXYq7FXYq7FXYq7FXYq7FXYq7FXYq7FXYq7FXYq7FXYq7FXYq7FXYq7FXYq7FXYq7FXYq7F
     </EmbeddedImage>
   </EmbeddedImages>
   <rd:ReportUnitType>Cm</rd:ReportUnitType>
-  <rd:ReportID>68a54eb9-0384-482b-b1e2-5c880b871ccb</rd:ReportID>
+  <rd:ReportID>6b01735d-6a85-45f5-857d-1d7a6e9596ac</rd:ReportID>
 </Report>

@@ -4,7 +4,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:AppAbsen.Views"
-        mc:Ignorable="d"
+        mc:Ignorable="d" Style="{StaticResource WindowStyle}"
         Title="UnitKerja" Height="500" Width="800" WindowStartupLocation="CenterScreen">
     <Grid>
         <Grid.RowDefinitions>
@@ -25,7 +25,7 @@
                 <ColumnDefinition Width="60*"/>
             </Grid.ColumnDefinitions>
 
-            <StackPanel Grid.Column="0" Grid.Row="0" Margin="5" Background="#FFFBF6F6">
+            <StackPanel Grid.Column="0" Grid.Row="0" Margin="5">
                 <StackPanel Grid.Column="0" Grid.Row="0">
                     <Grid>
                         <Grid.ColumnDefinitions>
@@ -60,20 +60,13 @@
                     </Button>
                 </WrapPanel>
             </StackPanel>
-            <StackPanel Grid.Column="1" Grid.Row="0" Margin="5" Background="#FFFBF6F6">
+            <StackPanel Grid.Column="1" Grid.Row="0" Margin="5">
                 <DataGrid ItemsSource="{Binding SourceView}" CanUserAddRows="False" CanUserDeleteRows="False" AutoGenerateColumns="False"
                   SelectedItem="{Binding SelectedItem}" Foreground="Black" FontSize="13" Margin="10">
                     <DataGrid.Columns>
                         <DataGridTextColumn Header="Id Unit Kerja" Binding="{Binding IdUnitKerja}"  Foreground="#FFEC6726" Width="20*"/>
                         <DataGridTextColumn Header="Nama Unit Kerja" Binding="{Binding NamaUnitKerja}"  Foreground="#FFEC6726" Width="80*"/>
-
                     </DataGrid.Columns>
-                    <DataGrid.ContextMenu>
-                        <ContextMenu>
-                            <MenuItem Header="Delete" Command="{Binding DeleteCommand}">
-                            </MenuItem>
-                        </ContextMenu>
-                    </DataGrid.ContextMenu>
                 </DataGrid>
             </StackPanel>
         </Grid>

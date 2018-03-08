@@ -56,6 +56,7 @@ namespace AppAbsen.ViewModels
             AdminLoginCommand = new CommandHandler { CanExecuteAction = x => true, ExecuteAction = AdminLoginAction };
             AbsenCommand = new CommandHandler { CanExecuteAction = AbsenCommandValidate, ExecuteAction = AbsenCommandAction };
             SourceView.Filter = TodayFilter;
+            SourceView.Refresh();
         }
 
         private bool TodayFilter(object obj)
@@ -63,7 +64,7 @@ namespace AppAbsen.ViewModels
             var data = (absen)obj;
             if(data!=null)
             {
-                if (today.IsEqualToday())
+                if (data.Tanggal.IsEqualToday())
                 {
                     return true;
                 }
@@ -91,6 +92,8 @@ namespace AppAbsen.ViewModels
                 var isSaved = Absen.Add(dataAbsen);
                 SourceView.Refresh();
                 Helpers.ShowSuccessMessage("Anda Sudah Absen");
+                IdAnggota = null;
+
             }
             catch (Exception ex)
             {

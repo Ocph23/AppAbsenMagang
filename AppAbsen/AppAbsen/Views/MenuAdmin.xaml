@@ -4,7 +4,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:AppAbsen.Views"
-        mc:Ignorable="d"
+        mc:Ignorable="d" Style="{StaticResource WindowStyle}"
         Title="MenuAdmin" WindowState="Maximized">
     <Grid>
         <Grid.RowDefinitions>
@@ -74,7 +74,7 @@
                     <Label Content="Search" HorizontalAlignment="Right" FontSize="24" FontStyle="Italic" FontFamily="Monotype Corsiva"/>
                 </StackPanel>
                 <StackPanel Grid.Column="2" Grid.Row="0">
-                    <TextBox Text="{Binding IdUnitKerja, Mode=TwoWay, ValidatesOnDataErrors=True}" Margin="0 3 0 0" HorizontalAlignment="Left" Width="166" IsEnabled="{Binding EnabledIdSiswa}" Height="30"/>
+                    <TextBox TextChanged="TextBox_TextChanged" Margin="0 3 0 0" HorizontalAlignment="Left" Width="166" Height="30"/>
                 </StackPanel>
             </Grid>
         </StackPanel>
@@ -83,6 +83,7 @@
                   SelectedItem="{Binding Selected}" Foreground="Black" FontSize="13" Margin="50 0 50 0">
                 <DataGrid.Columns>
                     <DataGridTextColumn Width="*" Header="Id_Anggota" Binding="{Binding IdMahasiswa}"  Foreground="#FFEC6726"/>
+                    <DataGridTextColumn Width="*" Header="Nama" Binding="{Binding Anggota.Nama}"  Foreground="#FFEC6726"/>
                     <DataGridTextColumn Width="*" Header="Tanggal" Binding="{Binding Tanggal,StringFormat=dd MMMM yyyy}"  Foreground="#FFEC6726"/>
                     <DataGridTextColumn Width="*" Header="Waktu Masuk" Binding="{Binding WaktuMasuk}"  Foreground="#FFEC6726"/>
                     <DataGridTextColumn Width="*" Header="WaktuPulang" Binding="{Binding WaktuPulang}"  Foreground="#FFEC6726"/>
@@ -92,12 +93,6 @@
                     <DataGridTextColumn Width="*" Header="Sakit" Binding="{Binding Sakit}"  Foreground="#FFEC6726"/>
                     <DataGridTextColumn Width="*" Header="Keterangan" Binding="{Binding Keterangan}"  Foreground="#FFEC6726"/>
                 </DataGrid.Columns>
-                <DataGrid.ContextMenu>
-                    <ContextMenu>
-                        <MenuItem Header="Delete" Command="{Binding DeleteCommand}">
-                        </MenuItem>
-                    </ContextMenu>
-                </DataGrid.ContextMenu>
             </DataGrid>
         </StackPanel>
 

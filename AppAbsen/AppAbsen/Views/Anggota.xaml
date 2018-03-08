@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:AppAbsen.Views"
         xmlns:l="clr-namespace:AppAbsen.Helper"
-        mc:Ignorable="d"
+        mc:Ignorable="d" Style="{StaticResource WindowStyle}"
         Title="Anggota" WindowState="Maximized" Height="635.5" Width="846">
     <Window.Resources>
         <l:EnumBooleanConverter  x:Key="enumBooleanConverter"/>
@@ -21,7 +21,7 @@
         </StackPanel>
         <WrapPanel Grid.Column="0" Grid.Row="1" HorizontalAlignment="Right" Margin="10">
             <Label Content="Search" HorizontalAlignment="Right" FontSize="24" FontStyle="Italic" FontFamily="Monotype Corsiva"/>
-            <TextBox Text="{Binding IdMahasiswa, Mode=TwoWay, ValidatesOnDataErrors=True}" Margin="3" HorizontalAlignment="Left" Width="166" Height="30"/>
+            <TextBox TextChanged="TextBox_TextChanged" Margin="3" HorizontalAlignment="Left" Width="166" Height="30"/>
         </WrapPanel>
         <Grid  Grid.Row="2" Grid.Column="0" Margin="10">
             <Grid.ColumnDefinitions>
@@ -101,7 +101,9 @@
                     </DataGrid.Columns>
                     <DataGrid.ContextMenu>
                         <ContextMenu>
-                            <MenuItem Header="Delete" Command="{Binding DeleteCommand}">
+                            <MenuItem Header="Ijin" Command="{Binding IjinCommand}">
+                            </MenuItem>
+                            <MenuItem Header="Sakit" Command="{Binding SakitCommand}">
                             </MenuItem>
                         </ContextMenu>
                     </DataGrid.ContextMenu>

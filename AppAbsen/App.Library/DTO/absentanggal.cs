@@ -14,7 +14,7 @@ namespace App.Library.DTO
         public string Nama { get; set; }
         public TimeSpan JamMasuk { get; set; }
         public TimeSpan JamPulang { get; set; }
-        public Status Keterangan { get; set; }
+        public string Keterangan { get; set; }
         public List<absen> Absens { get; set; }
     }
 }
